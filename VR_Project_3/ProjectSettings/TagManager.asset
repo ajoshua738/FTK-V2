@@ -8,6 +8,12 @@ TagManager:
   - LeftHand
   - RightHand
   - Energy
+  - Knife
+  - Ingredient/RawBurgerPatty
+  - KitchenTool/Pan
+  - KitchenTool/Pot
+  - Ingredient/Tomato
+  - KitchenEquipment/Griddle
   layers:
   - Default
   - TransparentFX
@@ -16,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Post Processing
-  - 
+  - Sliceable
   - 
   - 
   - 
