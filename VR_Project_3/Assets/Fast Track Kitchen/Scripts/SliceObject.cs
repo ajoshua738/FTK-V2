@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
-using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class SliceObject : MonoBehaviour
 {
@@ -12,6 +12,9 @@ public class SliceObject : MonoBehaviour
     //public float cutForce = 2000;
     public LayerMask sliceableLayer;
     public VelocityEstimator velocityEstimator;
+   
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,11 @@ public class SliceObject : MonoBehaviour
         if (hasHit)
         {
             GameObject target = hit.transform.gameObject;
-            Slice(target);
+            if (target.tag.Contains("Ingredient"))
+            {
+                Slice(target);
+            }
+          
         }
         
 
