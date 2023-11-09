@@ -3,16 +3,17 @@ using UnityEngine;
 public class PattyCookedState : PattyBaseState
 {
 
-    bool isCooking = true;
-    float increment = 0.1f;
-    float t = 0;
-    float timer = 0f;
-    float cookTimer = 0f;
-    float cookInterval = 1f;
+    
 
     public override void EnterState(PattyStateManager patty)
     {
         Debug.Log("cooked state");
+
+        patty.img.fillAmount = 0;
+        patty.img.color = Color.red;
+        patty.cookTimer = 0;
+        patty.isCooking = true;
+        patty.increment = 0;
     }
 
     public override void OnCollisionEnter(PattyStateManager patty, Collision collision)
@@ -20,8 +21,9 @@ public class PattyCookedState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
-            isCooking = true;
+            patty.isCooking = true;
             patty.cookSmoke.SetActive(true);
+            patty.progressUI.SetActive(true);
         }
     }
 
@@ -30,30 +32,32 @@ public class PattyCookedState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
-            isCooking = false;
+            patty.isCooking = false;
             patty.cookSmoke.SetActive(false);
+            patty.progressUI.SetActive(false);
         }
     }
 
     public override void UpdateState(PattyStateManager patty)
     {
-        if (isCooking)
+        if (patty.isCooking)
         {
             Debug.Log("Is cooking");
-            timer += Time.deltaTime;
+            patty.timer += Time.deltaTime;
 
 
-            if (timer >= cookInterval)
+            if (patty.timer >= patty.cookInterval)
             {
-                t += increment;
-              
-                cookTimer += cookInterval;
-                timer = 0f;
+
+                patty.increment += 0.1f;
+                patty.cookTimer += patty.cookInterval;
+                patty.timer = 0f;
+                patty.img.fillAmount = patty.increment;
             }
 
-            if (cookTimer >= 10f)
+            if (patty.cookTimer >= patty.cookTime)
             {
-                isCooking = false;
+                patty.isCooking = false;
                 Debug.Log("Is burnt");
                 patty.SwitchState(patty.BurntState);
             }

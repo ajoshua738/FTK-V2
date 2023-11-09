@@ -20,11 +20,6 @@ public class HexagonMeshCreator : MonoBehaviour
 
         CreateShape();
         UpdateMesh();
-
-     
-
-      
-
       
     }
 

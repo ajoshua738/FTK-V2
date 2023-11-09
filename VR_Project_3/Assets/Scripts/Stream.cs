@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stream : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Stream : MonoBehaviour
     private ParticleSystem splashParticle = null;
 
     private Coroutine pourRoutine = null;
+
+    public AddWater addwater;
 
 
     private Vector3 targetPosition = Vector3.zero;
@@ -23,6 +26,8 @@ public class Stream : MonoBehaviour
         MoveToPoistion(0, transform.position);
         MoveToPoistion(1, transform.position);
     }
+
+    
 
     public void Begin()
     {
@@ -73,7 +78,24 @@ public class Stream : MonoBehaviour
 
         Physics.Raycast(ray, out hit, 2.0f);
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
+
+        if(hit.collider.gameObject.tag == "Base")
+        {
+            addwater = hit.collider.gameObject.GetComponent<AddWater>();
+            addwater.isPouring = true;
+        }
+        else
+        {
+            if(addwater != null)
+            {
+                addwater.isPouring = false;
+            }
        
+        }
+       
+       
+    
+
         return endPoint;
     }
 

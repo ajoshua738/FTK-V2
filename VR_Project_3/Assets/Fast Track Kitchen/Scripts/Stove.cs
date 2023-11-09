@@ -11,6 +11,7 @@ public class Stove : MonoBehaviour
     public float minScale = 0.01f; // Minimum scale when knobValue is 0
     public float maxScale = 0.02f; // Maximum scale when knobValue is 1
     public List<GameObject> flames;
+    public bool isOn = false;
     // Start is called before the first frame update
     void Start()
     { 
@@ -28,6 +29,7 @@ public class Stove : MonoBehaviour
         if (knobValue == 0)
         {
             flame.SetActive(false);
+            isOn = false;
 
         }
         else if(knobValue >= 0.1)
@@ -40,6 +42,7 @@ public class Stove : MonoBehaviour
             {
                 obj.transform.localScale = new Vector3(newScaleValue, newScaleValue, newScaleValue);
             }
+            isOn = true;
         }
 
 

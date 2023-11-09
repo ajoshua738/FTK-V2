@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class PattyRawState : PattyBaseState
 {
-    float timer = 0f;
-    float cookTimer = 0f;
-    float cookInterval = 1f;
-    bool isCooking = false;
-    float increment = 0.1f;
-    float t = 0;
-
    
+
+
     public override void EnterState(PattyStateManager patty)
     {
         Debug.Log("Raw state");
@@ -21,23 +16,26 @@ public class PattyRawState : PattyBaseState
 
     public override void UpdateState(PattyStateManager patty)
     {
-        if(isCooking)
+        if(patty.isCooking)
         {
             Debug.Log("Is cooking");
-            timer += Time.deltaTime;
+            patty.timer += Time.deltaTime;
            
 
-            if(timer >= cookInterval)
+            //Update Cook progress every 1 second
+            if(patty.timer >= patty.cookInterval)
             {
-                t += increment;
-                patty.pattyMat.SetFloat("_Blend", t);
-                cookTimer += cookInterval;
-                timer = 0f;
+                patty.increment += 0.1f;
+                patty.pattyMat.SetFloat("_Blend", patty.increment);
+                patty.cookTimer += patty.cookInterval;
+                patty.timer = 0f;
+                patty.img.fillAmount = patty.increment;
             }
 
-            if (cookTimer >= 10f)
+            //Cooked at 10 seconds
+            if (patty.cookTimer >= patty.cookTime)
             {
-                isCooking = false;
+                patty.isCooking = false;
                 Debug.Log("Is cooked");
                 patty.SwitchState(patty.CookedState);
             }
@@ -54,9 +52,10 @@ public class PattyRawState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
-            isCooking = true;
+            patty.isCooking = true;
             patty.grillSound.Play();
             patty.cookSmoke.SetActive(true);
+            patty.progressUI.SetActive(true);
         }
     }
 
@@ -65,9 +64,10 @@ public class PattyRawState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
-            isCooking = false;
+            patty.isCooking = false;
             patty.grillSound.Stop();
             patty.cookSmoke.SetActive(false);
+            patty.progressUI.SetActive(false);
         }
     }
 }
