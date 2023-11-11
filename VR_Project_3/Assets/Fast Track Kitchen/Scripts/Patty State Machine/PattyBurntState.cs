@@ -13,6 +13,7 @@ public class PattyBurntState : PattyBaseState
         patty.cookSmoke.SetActive(false);
         patty.burnSmoke.SetActive(true);
         patty.progressUI.SetActive(false);
+        patty.pattyObj.GetComponent<Renderer>().material = patty.burnMat;
     }
 
     public override void OnCollisionEnter(PattyStateManager patty, Collision collision)

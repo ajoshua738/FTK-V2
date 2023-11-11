@@ -42,7 +42,7 @@ public class PattyCookedState : PattyBaseState
     {
         if (patty.isCooking)
         {
-            Debug.Log("Is cooking");
+            //Debug.Log("Is cooking");
             patty.timer += Time.deltaTime;
 
 
@@ -58,13 +58,13 @@ public class PattyCookedState : PattyBaseState
             if (patty.cookTimer >= patty.cookTime)
             {
                 patty.isCooking = false;
-                Debug.Log("Is burnt");
+                //Debug.Log("Is burnt");
                 patty.SwitchState(patty.BurntState);
             }
         }
         else
         {
-            Debug.Log("Not cooking");
+           // Debug.Log("Not cooking");
         }
     }
 }

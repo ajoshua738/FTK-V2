@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5331705230355481689
 Transform:
   m_ObjectHideFlags: 0
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pattyObj: {fileID: 11211189403332368}
   pattyMat: {fileID: 0}
+  burnMat: {fileID: 2100000, guid: fd989163e5618f54ab08de6396972823, type: 2}
   grillSound: {fileID: 8418293969089837816}
   burnSound: {fileID: 5562211466302189660}
   cookSmoke: {fileID: 3532154332848641963}
@@ -840,6 +841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pfHealthBarUIWorldCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699838, guid: f1419c2a3f5ecf44e824039f908fea60,
         type: 3}

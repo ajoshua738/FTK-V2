@@ -14,6 +14,7 @@ public class PattyStateManager : MonoBehaviour
     //To change burger material from raw to cooked
     public GameObject pattyObj;
     public Material pattyMat;
+    public Material burnMat;
     public AudioSource grillSound;
     public AudioSource burnSound;
     public GameObject cookSmoke;
@@ -74,7 +75,7 @@ public class PattyStateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
     }
 
     public void SwitchState(PattyBaseState state)
