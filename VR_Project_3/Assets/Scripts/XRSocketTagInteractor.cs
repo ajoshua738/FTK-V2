@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRSocketTagInteractor : XRSocketInteractor
 {
     public List<string> targetTags = new List<string>();
+    public Material noHoverMat;
 
     public override bool CanHover(IXRHoverInteractable interactable)
     {
@@ -19,13 +20,46 @@ public class XRSocketTagInteractor : XRSocketInteractor
 
     private bool HasMatchingTag(Transform interactableTransform)
     {
-        foreach (string tag in targetTags)
+        if(targetTags != null)
         {
-            if (interactableTransform.CompareTag(tag))
+            foreach (string tag in targetTags)
             {
-                return true;
+                if (interactableTransform.CompareTag(tag))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
-        return false;
+       
+        return true;
+    }
+
+
+    protected override void OnSelectEntered(XRBaseInteractable interactable)
+    {
+        base.OnSelectEntered(interactable);
+
+        // Check if an object is socketed and disable the "Can't Hover" mesh.
+        if (attachTransform != null)
+        {
+            interactableCantHoverMeshMaterial = null;
+        }
+    }
+
+   
+
+    protected override void OnSelectExited(XRBaseInteractable interactable)
+    {
+        base.OnSelectExited(interactable);
+
+       
+        if (interactableCantHoverMeshMaterial == null)
+        {
+            interactableCantHoverMeshMaterial = noHoverMat;
+        }
     }
 }

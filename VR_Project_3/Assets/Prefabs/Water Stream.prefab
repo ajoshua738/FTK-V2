@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 5238570228697279501}
   - component: {fileID: 5238570228697279500}
   m_Layer: 0
-  m_Name: Stream
+  m_Name: Water Stream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

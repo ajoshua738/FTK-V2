@@ -1,9 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Stream : MonoBehaviour
+public class KetchupStream : MonoBehaviour
 {
     private LineRenderer lineRenderer = null;
     private ParticleSystem splashParticle = null;
@@ -27,7 +26,7 @@ public class Stream : MonoBehaviour
         MoveToPoistion(1, transform.position);
     }
 
-    
+
 
     public void Begin()
     {
@@ -37,7 +36,7 @@ public class Stream : MonoBehaviour
 
     private IEnumerator BeginPour()
     {
-        while(gameObject.activeSelf)
+        while (gameObject.activeSelf)
         {
             targetPosition = FindEndPoint();
 
@@ -47,8 +46,8 @@ public class Stream : MonoBehaviour
 
             yield return null;
         }
-        
-        
+
+
     }
 
     public void End()
@@ -59,14 +58,14 @@ public class Stream : MonoBehaviour
 
     private IEnumerator EndPour()
     {
-        while(!HasReachedPosition(0, targetPosition))
+        while (!HasReachedPosition(0, targetPosition))
         {
             AnimateToPosition(0, targetPosition);
             AnimateToPosition(1, targetPosition);
 
             yield return null;
         }
-            
+
         Destroy(gameObject);
     }
 
@@ -79,22 +78,22 @@ public class Stream : MonoBehaviour
         Physics.Raycast(ray, out hit, 2.0f);
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
 
-        if(hit.collider.gameObject.tag == "Base")
+        if (hit.collider.gameObject.tag == "Base")
         {
             addwater = hit.collider.gameObject.GetComponent<AddWater>();
             addwater.isPouring = true;
         }
         else
         {
-            if(addwater != null)
+            if (addwater != null)
             {
                 addwater.isPouring = false;
             }
-       
+
         }
-       
-       
-    
+
+
+
 
         return endPoint;
     }
@@ -102,7 +101,7 @@ public class Stream : MonoBehaviour
     private void MoveToPoistion(int index, Vector3 targetPosition)
     {
         lineRenderer.SetPosition(index, targetPosition);
-             
+
     }
 
     private void AnimateToPosition(int index, Vector3 targetPosition)
@@ -131,6 +130,6 @@ public class Stream : MonoBehaviour
 
             yield return null;
         }
-       
+
     }
 }

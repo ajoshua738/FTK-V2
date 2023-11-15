@@ -39,9 +39,11 @@ public class PattyStateManager : MonoBehaviour
     public bool isCooking = false;
   
     public float increment = 0;// the value to add to change the material
-  
 
 
+    public Ingredient ingredient;
+    public IngredientSO cookedPattySO;
+    public IngredientSO burntPattySO;
 
 
     // Start is called before the first frame update
@@ -59,6 +61,8 @@ public class PattyStateManager : MonoBehaviour
 
         currentState = RawState;
         currentState.EnterState(this);
+
+        ingredient = GetComponent<Ingredient>();
     }
 
     private void OnCollisionEnter(Collision collision)

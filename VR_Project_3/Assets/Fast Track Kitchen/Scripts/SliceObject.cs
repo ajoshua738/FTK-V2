@@ -13,12 +13,12 @@ public class SliceObject : MonoBehaviour
     public LayerMask sliceableLayer;
     public VelocityEstimator velocityEstimator;
    
-
+ 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame

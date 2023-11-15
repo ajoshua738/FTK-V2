@@ -8,7 +8,7 @@ public class PourDetector : MonoBehaviour
     public GameObject streamPrefab = null;
 
     private bool isPouring = false;
-    private Stream currentStream = null;
+    private WaterStream currentStream = null;
 
     private void Update()
     {
@@ -51,9 +51,9 @@ public class PourDetector : MonoBehaviour
         return transform.up.y * Mathf.Rad2Deg;
     }
 
-    private Stream CreateStream()
+    private WaterStream CreateStream()
     {
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
-        return streamObject.GetComponent<Stream>();
+        return streamObject.GetComponent<WaterStream>();
     }
 }

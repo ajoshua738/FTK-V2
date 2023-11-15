@@ -7,6 +7,7 @@ public class PattyCookedState : PattyBaseState
 
     public override void EnterState(PattyStateManager patty)
     {
+        patty.ingredient.ingredientSO = patty.cookedPattySO;
         Debug.Log("cooked state");
 
         patty.img.fillAmount = 0;
@@ -22,6 +23,7 @@ public class PattyCookedState : PattyBaseState
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
             patty.isCooking = true;
+            patty.grillSound.Play();
             patty.cookSmoke.SetActive(true);
             patty.progressUI.SetActive(true);
         }
@@ -33,6 +35,7 @@ public class PattyCookedState : PattyBaseState
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
             patty.isCooking = false;
+            patty.grillSound.Stop();
             patty.cookSmoke.SetActive(false);
             patty.progressUI.SetActive(false);
         }

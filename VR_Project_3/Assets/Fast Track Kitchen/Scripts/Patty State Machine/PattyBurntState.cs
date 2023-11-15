@@ -7,6 +7,7 @@ public class PattyBurntState : PattyBaseState
     
     public override void EnterState(PattyStateManager patty)
     {
+        patty.ingredient.ingredientSO = patty.burntPattySO;
         Debug.Log("burnt state");
         patty.grillSound.Stop();
         patty.burnSound.Play();

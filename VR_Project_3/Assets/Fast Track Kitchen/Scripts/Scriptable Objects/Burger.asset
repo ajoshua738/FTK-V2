@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5239ec25e29634746b1a2bbc24542861, type: 3}
+  m_Name: Burger
+  m_EditorClassIdentifier: 
+  ingredientsSOList:
+  - {fileID: 11400000, guid: 92162d98085fed542a9b30c64b8cbb6b, type: 2}
+  - {fileID: 11400000, guid: 0c1318923adc9a6448eb6e904a77d9f8, type: 2}
+  - {fileID: 11400000, guid: 9731a48a9f4d696468e1abeae2850a15, type: 2}
+  - {fileID: 11400000, guid: 66c165f5833e15c45b89a86da9a38641, type: 2}
+  - {fileID: 11400000, guid: 8e26ec0c60c8b77419255baaa7709506, type: 2}
+  - {fileID: 11400000, guid: 36f6333140603a245b02c02918bd437e, type: 2}
+  - {fileID: 11400000, guid: b00c9533b9c8abe4b97e7f5a88d9b72f, type: 2}
+  - {fileID: 11400000, guid: ee67fda2412412e4ba1af7fe4b1c972a, type: 2}
+  - {fileID: 11400000, guid: 5f1b64f07627ff14c8301ea30ab2a713, type: 2}
+  recipeName: Burger

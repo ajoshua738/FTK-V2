@@ -14,6 +14,7 @@ public class GenerateReticle : MonoBehaviour
 
     public int pourThreshold = 35;
     public bool isPouring = false;
+    public float currentAngle;
 
     void Update()
     {
@@ -61,6 +62,7 @@ public class GenerateReticle : MonoBehaviour
     private float CalculatePourAngle()
     {
         //print(transform.up.y * Mathf.Rad2Deg);
+        currentAngle = transform.up.y * Mathf.Rad2Deg;
         return transform.up.y * Mathf.Rad2Deg;
     }
 }
