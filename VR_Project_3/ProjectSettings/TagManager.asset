@@ -17,6 +17,8 @@ TagManager:
   - Base
   - Ingredient/BottomBun
   - Ingredient/Cabbage
+  - Ingredient/Salt
+  - Ingredient/Pepper
   layers:
   - Default
   - TransparentFX

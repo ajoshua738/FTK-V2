@@ -93,7 +93,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8954898003830337209}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.58, y: 0.746, z: 2.256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,11 +118,12 @@ MonoBehaviour:
   reticle: {fileID: 6217864501805550227, guid: 27200939f95c9e04cbb453be0f7d8dbc, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  offset: 0.01
+    m_Bits: 256
+  offset: 0.001
   origin: {fileID: 4656749232455894101}
   pourThreshold: 0
   isPouring: 0
+  currentAngle: 0
 --- !u!54 &4959202109510386590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -363,6 +364,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeSound: {fileID: 983846738402441103}
+  salt: {fileID: 11400000, guid: ee67fda2412412e4ba1af7fe4b1c972a, type: 2}
+  origin: {fileID: 4656749232455894101}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!82 &983846738402441103
 AudioSource:
   m_ObjectHideFlags: 0

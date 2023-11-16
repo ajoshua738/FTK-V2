@@ -28,11 +28,9 @@ public class XRSocketTagInteractor : XRSocketInteractor
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+              
             }
+            return false;
         }
        
         return true;

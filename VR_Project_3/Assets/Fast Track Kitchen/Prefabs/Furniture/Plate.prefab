@@ -28,15 +28,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13145657180820911}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.8120835, z: 0, w: 0.5835413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.848, y: 6.362, z: -10.308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4002410894412215782}
   - {fileID: 4062879598847746911}
+  - {fileID: 4423865323606643166}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 108.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3235151773246217787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -419,8 +420,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.19870675, y: 0.08526611, z: 0.1987067}
-  m_Center: {x: 0.0015005469, y: 0.042853832, z: 0.0015005469}
+  m_Size: {x: 0.17843401, y: 0.04472065, z: 0.178434}
+  m_Center: {x: 0.0053016543, y: 0.0225811, z: 0.005301654}
 --- !u!114 &1860719601807886432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,3 +488,56 @@ MonoBehaviour:
   - Ingredient/BottomBun
   - Ingredient/RawBurgerPatty
   noHoverMat: {fileID: 2100000, guid: 0c4c90295c3528041a0dbfcb588d9337, type: 2}
+--- !u!1 &5611374647004169615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4423865323606643166}
+  - component: {fileID: 3739332984099519763}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4423865323606643166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611374647004169615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3369918546961342525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3739332984099519763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611374647004169615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25192297, y: 0.18156195, z: 0.251923}
+  m_Center: {x: 0.0015005469, y: 0.09100175, z: 0.001500547}

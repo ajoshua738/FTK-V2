@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383829707364797600}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.000000024604788, y: -0.000000011175871, z: 0.051599987}
-  m_LocalScale: {x: 0.22, y: 0.2, z: 0.0805}
+  m_LocalRotation: {x: -0, y: 0.000000029802322, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05159998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6875433917099231469}
-  m_Father: {fileID: 3612171103191400785}
+  m_Father: {fileID: 7090492318607467727}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &95771620653428430
 BoxCollider:
@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.31744966, z: 1.7659327}
-  m_Center: {x: 0, y: -0.055043776, z: 0.040119197}
+  m_Size: {x: 0.30397737, y: 0.083473206, z: 0.3039774}
+  m_Center: {x: 0.0033302903, y: 0.00042915344, z: 0.00333029}
 --- !u!33 &1097613910132502484
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   targetTags:
   - Ingredient/Tomato
   - Ingredient/Cabbage
-  noHoverMat: {fileID: 0}
+  noHoverMat: {fileID: 2100000, guid: 0c4c90295c3528041a0dbfcb588d9337, type: 2}
 --- !u!1 &2960681538602265045
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 2960681538602265045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.189, z: 0}
+  m_LocalPosition: {x: 0, y: -0.042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -191,8 +191,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8695432758874832118}
+  m_Children: []
   m_Father: {fileID: 7090492318607467727}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1165783675640182943
@@ -278,6 +277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8695432758874832118}
   - {fileID: 3612171103191400785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

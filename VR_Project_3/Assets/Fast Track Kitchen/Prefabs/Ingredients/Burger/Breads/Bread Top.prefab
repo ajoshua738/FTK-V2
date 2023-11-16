@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4413061221081142019}
   - component: {fileID: -3299574198333628132}
   - component: {fileID: 4689073643863182995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bread Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
