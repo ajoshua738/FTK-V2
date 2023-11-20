@@ -7,6 +7,7 @@ public class SaltShaker : MonoBehaviour
 {
     public AudioSource shakeSound;
     public IngredientSO salt;
+    public GameObject saltPrefab;
     public Transform origin;
     public LayerMask layerMask;
     private GenerateReticle generateReticle;
@@ -38,9 +39,10 @@ public class SaltShaker : MonoBehaviour
                 {
                     if (child.CompareTag("Ingredient/Salt"))
                     {
-                        Ingredient saltIngredient = child.AddComponent<Ingredient>();
-                        saltIngredient.ingredientSO = salt;
-
+                        GameObject saltObject = Instantiate(saltPrefab, child.transform.position, Quaternion.identity);
+                        saltObject.transform.SetParent(child.transform); // Make the saltObject a child of 'child'
+                        
+                       
                     }
                 }
             }
