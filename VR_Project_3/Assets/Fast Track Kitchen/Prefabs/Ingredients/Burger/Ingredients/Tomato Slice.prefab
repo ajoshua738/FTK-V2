@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 8613575935705272430}
   - component: {fileID: 7363857311382922650}
   - component: {fileID: 1074159606902455263}
+  - component: {fileID: 5265294706255044279}
   m_Layer: 8
   m_Name: Tomato Slice
   m_TagString: Untagged
@@ -414,6 +415,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandModel: {fileID: 0}
   rightHandModel: {fileID: 0}
+--- !u!114 &5265294706255044279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197598567735799684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e7730d80f161740a62a536aa44e07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientSO: {fileID: 11400000, guid: 8e26ec0c60c8b77419255baaa7709506, type: 2}
 --- !u!1 &7073789919999329594
 GameObject:
   m_ObjectHideFlags: 0

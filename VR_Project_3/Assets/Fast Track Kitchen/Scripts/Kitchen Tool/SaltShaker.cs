@@ -11,6 +11,7 @@ public class SaltShaker : MonoBehaviour
     public Transform origin;
     public LayerMask layerMask;
     private GenerateReticle generateReticle;
+    public string parentTag;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,7 @@ public class SaltShaker : MonoBehaviour
                 // Check children of the RawBurgerPatty object for the Ingredient/Salt tag
                 foreach (Transform child in rawBurgerPatty)
                 {
-                    if (child.CompareTag("Ingredient/Salt"))
+                    if (child.CompareTag(parentTag))
                     {
                         GameObject saltObject = Instantiate(saltPrefab, child.transform.position, Quaternion.identity);
                         saltObject.transform.SetParent(child.transform); // Make the saltObject a child of 'child'

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indgredientName: Cabbage
   ingredientAmount: 1
+  unit: slice

@@ -45,7 +45,7 @@ public class PattyStateManager : MonoBehaviour
     public IngredientSO cookedPattySO;
     public IngredientSO burntPattySO;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +63,8 @@ public class PattyStateManager : MonoBehaviour
         currentState.EnterState(this);
 
         ingredient = GetComponent<Ingredient>();
+
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -80,6 +82,7 @@ public class PattyStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
         //Debug.Log(currentState);
+        
     }
 
     public void SwitchState(PattyBaseState state)

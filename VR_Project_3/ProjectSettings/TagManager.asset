@@ -19,6 +19,9 @@ TagManager:
   - Ingredient/Cabbage
   - Ingredient/Salt
   - Ingredient/Pepper
+  - Unit Text
+  - Name Text
+  - Amount Text
   layers:
   - Default
   - TransparentFX

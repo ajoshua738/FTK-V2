@@ -7,4 +7,5 @@ public class IngredientSO : ScriptableObject
 {
     public string indgredientName;
     public float ingredientAmount;
+    public string unit;
 }

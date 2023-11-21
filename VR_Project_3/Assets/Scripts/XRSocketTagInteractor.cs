@@ -20,7 +20,11 @@ public class XRSocketTagInteractor : XRSocketInteractor
 
     private bool HasMatchingTag(Transform interactableTransform)
     {
-        if(targetTags != null)
+        if (targetTags == null || targetTags.Count == 0)
+        {
+            return true; // Return true when the targetTags list is empty
+        }
+        else
         {
             foreach (string tag in targetTags)
             {
@@ -28,12 +32,11 @@ public class XRSocketTagInteractor : XRSocketInteractor
                 {
                     return true;
                 }
-              
             }
             return false;
         }
-       
-        return true;
+
+
     }
 
 

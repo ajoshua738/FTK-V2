@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5559334204458881763}
   - component: {fileID: 5423886133724446025}
   - component: {fileID: 1541087742091039457}
+  - component: {fileID: 5166734032421804628}
   m_Layer: 8
   m_Name: Ketchup
   m_TagString: Untagged
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 2307526738425734627}
+  - {fileID: 5166734032421804628}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -260,6 +261,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientSO: {fileID: 11400000, guid: 36f6333140603a245b02c02918bd437e, type: 2}
+--- !u!65 &5166734032421804628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963356406753388192}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.084017634, y: 0.0058102566, z: 0.08401763}
+  m_Center: {x: -0.00023406744, y: 0.00045078946, z: -0.0002340674}
 --- !u!1 &5359682226323910616
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +412,6 @@ GameObject:
   - component: {fileID: 505613642834697457}
   - component: {fileID: 5565219578166020686}
   - component: {fileID: 5828998444490144394}
-  - component: {fileID: 2307526738425734627}
   m_Layer: 0
   m_Name: KetchupObj
   m_TagString: Untagged
@@ -463,24 +484,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2307526738425734627
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375120617407447874}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.16237281, y: 0.0058102566, z: 0.16237281}
-  m_Center: {x: 0.00017550215, y: 0.00045078946, z: -0.00036939606}

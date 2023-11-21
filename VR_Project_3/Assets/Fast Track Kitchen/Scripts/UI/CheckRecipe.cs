@@ -7,12 +7,15 @@ public class CheckRecipe : MonoBehaviour
 
     
     public List<IngredientSO> ingredients;
-    public RecipeSO recipeSO;
+   
+  
+    public RecipeSO originalRecipeSO;
+    public RecipeSO newRecipeSO;
     public Dictionary<string, float> ingredientAmounts;
     // Start is called before the first frame update
     void Start()
     {
-        
+        newRecipeSO = Instantiate(originalRecipeSO);
     }
 
     // Update is called once per frame
@@ -24,9 +27,9 @@ public class CheckRecipe : MonoBehaviour
 
     public void CheckFinalRecipe()
     {
-        if (recipeSO != null)
+        if (newRecipeSO != null)
         {
-            List<IngredientSO> recipeIngredients = recipeSO.ingredientsSOList;
+            List<IngredientSO> recipeIngredients = newRecipeSO.ingredientsSOList;
 
             foreach (var recipeIngredient in recipeIngredients)
             {
@@ -87,21 +90,26 @@ public class CheckRecipe : MonoBehaviour
         ingredientAmounts = new Dictionary<string, float>();
 
         // Loop through the ingredients list
+        // Loop through the ingredients list
         for (int i = 0; i < ingredients.Count; i++)
         {
             string currentIngredientName = ingredients[i].indgredientName;
             float currentIngredientAmount = ingredients[i].ingredientAmount;
+            string currentIngredientUnit = ingredients[i].unit; // Retrieve the unit
+
+            // Create a unique key for each ingredient including the unit
+            string ingredientKey = currentIngredientName + "_" + currentIngredientUnit;
 
             // Check if the ingredient name exists in the dictionary
-            if (ingredientAmounts.ContainsKey(currentIngredientName))
+            if (ingredientAmounts.ContainsKey(ingredientKey))
             {
                 // Add the amount to the existing ingredient in the dictionary
-                ingredientAmounts[currentIngredientName] += currentIngredientAmount;
+                ingredientAmounts[ingredientKey] += currentIngredientAmount;
             }
             else
             {
                 // Add the ingredient to the dictionary
-                ingredientAmounts.Add(currentIngredientName, currentIngredientAmount);
+                ingredientAmounts.Add(ingredientKey, currentIngredientAmount);
             }
         }
 
@@ -111,12 +119,78 @@ public class CheckRecipe : MonoBehaviour
         // Rebuild the ingredients list with aggregated amounts
         foreach (var kvp in ingredientAmounts)
         {
+            string[] keyParts = kvp.Key.Split('_');
+            string ingredientName = keyParts[0];
+            string ingredientUnit = keyParts[1];
+
             // Create a new instance of IngredientSO using CreateInstance
             IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
-            aggregatedIngredient.indgredientName = kvp.Key;
+            aggregatedIngredient.name = ingredientName;
+            aggregatedIngredient.indgredientName = ingredientName;
             aggregatedIngredient.ingredientAmount = kvp.Value;
+            aggregatedIngredient.unit = ingredientUnit; // Set the unit
+
             ingredients.Add(aggregatedIngredient);
         }
+        AggregateRecipeIngredients();
         CheckFinalRecipe();
     }
+
+
+    public void AggregateRecipeIngredients()
+    {
+        ingredientAmounts = new Dictionary<string, float>();
+
+        if (newRecipeSO != null)
+        {
+            List<IngredientSO> recipeIngredients = newRecipeSO.ingredientsSOList;
+
+            // Loop through the ingredients in the recipeSO
+            foreach (var recipeIngredient in recipeIngredients)
+            {
+                string currentIngredientName = recipeIngredient.indgredientName;
+                float currentIngredientAmount = recipeIngredient.ingredientAmount;
+                string currentIngredientUnit = recipeIngredient.unit; // Retrieve the unit
+
+                // Create a unique key for each ingredient including the unit
+                string ingredientKey = currentIngredientName + "_" + currentIngredientUnit;
+
+                // Check if the ingredient name exists in the dictionary
+                if (ingredientAmounts.ContainsKey(ingredientKey))
+                {
+                    // Add the amount to the existing ingredient in the dictionary
+                    ingredientAmounts[ingredientKey] += currentIngredientAmount;
+                }
+                else
+                {
+                    // Add the ingredient to the dictionary
+                    ingredientAmounts.Add(ingredientKey, currentIngredientAmount);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("RecipeSO is not assigned!");
+        }
+
+        newRecipeSO.ingredientsSOList.Clear();
+       
+        foreach (var kvp in ingredientAmounts)
+        {
+      
+            string[] keyParts = kvp.Key.Split('_');
+            string ingredientName = keyParts[0];
+            string ingredientUnit = keyParts[1];
+
+            // Create a new instance of IngredientSO using CreateInstance
+            IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
+            aggregatedIngredient.name = ingredientName;
+            aggregatedIngredient.indgredientName = ingredientName;
+            aggregatedIngredient.ingredientAmount = kvp.Value;
+            aggregatedIngredient.unit = ingredientUnit; // Set the unit
+            newRecipeSO.ingredientsSOList.Add(aggregatedIngredient);
+        }
+    }
+
+
 }

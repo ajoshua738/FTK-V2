@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Ketchup
   m_EditorClassIdentifier: 
   indgredientName: Ketchup
-  ingredientAmount: 5
+  ingredientAmount: 15
+  unit: ml

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indgredientName: Cheese
   ingredientAmount: 1
+  unit: slice

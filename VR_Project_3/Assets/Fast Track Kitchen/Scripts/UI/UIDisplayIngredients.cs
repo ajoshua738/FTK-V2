@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class UIDisplayIngredient : MonoBehaviour
 {
     public Transform startingPoint; // Reference to the starting point of first text prefab
@@ -17,9 +18,8 @@ public class UIDisplayIngredient : MonoBehaviour
     public Transform playerTransform;
     public GameObject UIContainer; // The kitchen tool that holds the UI
 
-   
 
-
+    public List<GameObject> enteredIngredients = new List<GameObject>(); // List to store entered ingredients
 
 
     private void Start()
@@ -66,54 +66,68 @@ public class UIDisplayIngredient : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
-            print(other.gameObject.name +" Entered the plate");
-            Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
-            IngredientSO ingredientSO = ingredient.GetIngredientSO();
-
-            string ingredientName = ingredientSO.indgredientName;
-            float amount = ingredientSO.ingredientAmount;
-
-            if (displayedIngredients.ContainsKey(ingredientName))
+            if (!enteredIngredients.Contains(other.gameObject))
             {
-                UpdateIngredientAmount(ingredientName, amount);
+
+                GameObject obj = other.gameObject;
+                enteredIngredients.Add(obj);
+                print(other.gameObject.name + " Entered the plate");
+                Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
+                IngredientSO ingredientSO = ingredient.GetIngredientSO();
+
+                string ingredientName = ingredientSO.indgredientName;
+                float amount = ingredientSO.ingredientAmount;
+                string unit = ingredientSO.unit;
+
+                if (displayedIngredients.ContainsKey(ingredientName))
+                {
+                    UpdateIngredientAmount(ingredientName, amount);
+                }
+                else
+                {
+                    DisplayNewIngredient(ingredientName, amount, unit);
+                }
             }
-            else
-            {
-                DisplayNewIngredient(ingredientName, amount);
-            }
+
+          
+            
         }
     }
 
-    private void DisplayNewIngredient(string ingredientName, float amount)
+    private void DisplayNewIngredient(string ingredientName, float amount, string unit)
     {
+
+        Debug.Log("Entered display new ingredient", this);
         GameObject newText = Instantiate(textPrefab, Vector3.zero, Quaternion.identity, startingPoint);
         newText.transform.localRotation = Quaternion.identity; // Set rotation to zero
-        newText.GetComponentInChildren<TextMeshProUGUI>().text = ingredientName + ": " + amount;
-        displayedIngredients.Add(ingredientName, newText);
 
+        TextMeshProUGUI nameText = newText.transform.Find("Name Text").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI amountText = newText.transform.Find("Amount Text").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI unitText = newText.transform.Find("Unit Text").GetComponent<TextMeshProUGUI>();
+
+        nameText.text = ingredientName;
+        amountText.text = amount.ToString();
+        unitText.text = unit;
+        displayedIngredients.Add(ingredientName, newText);
+     
+      
+       
         RepositionUI();
     }
 
     private void UpdateIngredientAmount(string ingredientName, float amount)
     {
-        if (displayedIngredients.ContainsKey(ingredientName))
-        {
-            GameObject textToUpdate = displayedIngredients[ingredientName];
-            TextMeshProUGUI textMeshPro = textToUpdate.GetComponentInChildren<TextMeshProUGUI>();
+       
+        GameObject textToUpdate = displayedIngredients[ingredientName];
+        TextMeshProUGUI amountText = textToUpdate.transform.Find("Amount Text").GetComponent<TextMeshProUGUI>();
+        string currentText = amountText.text;
 
-            // Get the current text and extract the amount value
-            string currentText = textMeshPro.text;
-            string[] splitText = currentText.Split(':');
-            float currentAmount = float.Parse(splitText[1]);
+        float currentAmount = float.Parse(currentText);
+        float updatedAmount = currentAmount + amount;
 
-            // Add the new amount to the existing amount
-            float updatedAmount = currentAmount + amount;
+        amountText.text = updatedAmount.ToString();
+        RepositionUI();
 
-            // Update the text with the new amount
-            textMeshPro.text = ingredientName + ": " + updatedAmount;
-
-            RepositionUI();
-        }
     }
 
     private void RepositionUI()
@@ -132,6 +146,8 @@ public class UIDisplayIngredient : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
+            enteredIngredients.Remove(other.gameObject);
+
             Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
             IngredientSO ingredientSO = ingredient.GetIngredientSO();
 

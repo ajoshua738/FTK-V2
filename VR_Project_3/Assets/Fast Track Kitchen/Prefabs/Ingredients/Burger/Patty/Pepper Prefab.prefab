@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4603955775727831815}
   - component: {fileID: 285494989491067902}
   m_Layer: 8
-  m_Name: Pepper Obj
+  m_Name: Pepper Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,4 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e7730d80f161740a62a536aa44e07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientSO: {fileID: 11400000, guid: ee67fda2412412e4ba1af7fe4b1c972a, type: 2}
+  ingredientSO: {fileID: 11400000, guid: b00c9533b9c8abe4b97e7f5a88d9b72f, type: 2}

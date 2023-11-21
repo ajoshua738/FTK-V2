@@ -570,7 +570,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2631,7 +2631,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -3477,7 +3477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317eb018e942e89459efd38236674d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 5079254509501719266}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
 --- !u!1 &5794703082798064861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,7 +5170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317eb018e942e89459efd38236674d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 2102948657821292336}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
 --- !u!1 &9064585936808518081
 GameObject:
   m_ObjectHideFlags: 0
