@@ -7,13 +7,14 @@ public class PattyBurntState : PattyBaseState
     
     public override void EnterState(PattyStateManager patty)
     {
+        patty.isCooking = false;
         patty.ingredient.ingredientSO = patty.burntPattySO;
         Debug.Log("burnt state");
         patty.grillSound.Stop();
         patty.burnSound.Play();
         patty.cookSmoke.SetActive(false);
         patty.burnSmoke.SetActive(true);
-        patty.progressUI.SetActive(false);
+        patty.progressBarUI.SetActive(false);
         patty.pattyObj.GetComponent<Renderer>().material = patty.burnMat;
     }
 

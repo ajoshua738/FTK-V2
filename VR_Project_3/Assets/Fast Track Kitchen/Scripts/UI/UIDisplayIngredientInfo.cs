@@ -11,7 +11,8 @@ public class UIDisplayIngredientInfo : MonoBehaviour
     private float amount;
     public bool canBeUpdated;
     public bool isSockted = false;
-    float originalAmount = 0;
+    int count = 0;
+
   
     // Start is called before the first frame update
     void Start()
@@ -56,14 +57,16 @@ public class UIDisplayIngredientInfo : MonoBehaviour
 
     public void UpdateInfo()
     {
-      
-        if (canBeUpdated)
+
+        
+        if (canBeUpdated && count > 0) 
         {
             TextMeshProUGUI amountText = textPrefab.transform.Find("Amount Text").GetComponent<TextMeshProUGUI>();
             float updatedAmount = float.Parse(amountText.text) + amount;
             amountText.text = updatedAmount.ToString();
         }
-      
+        count++;
+
     }
 
     public void ResetAmount()
@@ -71,6 +74,7 @@ public class UIDisplayIngredientInfo : MonoBehaviour
         TextMeshProUGUI amountText = textPrefab.transform.Find("Amount Text").GetComponent<TextMeshProUGUI>();
         
         amountText.text = amount.ToString();
+        count = 0;
     }
 }
 

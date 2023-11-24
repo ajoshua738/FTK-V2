@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 3332887870668655104}
   - component: {fileID: 3784604095774144209}
   - component: {fileID: 4302198386908363369}
+  - component: {fileID: 8744926219555218220}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -233,6 +234,19 @@ MonoBehaviour:
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
   targetTags: []
   noHoverMat: {fileID: 2100000, guid: 0c4c90295c3528041a0dbfcb588d9337, type: 2}
+--- !u!114 &8744926219555218220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574874385812461441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b451f25e69b0544a16ddfd87f56704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketInteractable: {fileID: 0}
 --- !u!1 &8966476189407013457
 GameObject:
   m_ObjectHideFlags: 0

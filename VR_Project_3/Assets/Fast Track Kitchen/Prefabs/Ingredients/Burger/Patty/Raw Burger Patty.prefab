@@ -351,17 +351,18 @@ MonoBehaviour:
   burnSound: {fileID: 5562211466302189660}
   cookSmoke: {fileID: 3532154332848641963}
   burnSmoke: {fileID: 443503764600342060}
-  progressUI: {fileID: 2674947484092874755}
+  progressBarUI: {fileID: 2674947483099871772}
   img: {fileID: 2674947482718719660}
-  cookTime: 10
-  cookTimer: 0
   timer: 0
-  cookInterval: 0
   isCooking: 0
-  increment: 0
+  progress: 0
+  lowTempProgress: 0.016
+  mediumTempProgress: 0.03
+  highTempProgress: 0.1
   ingredient: {fileID: 0}
   cookedPattySO: {fileID: 11400000, guid: 0c1318923adc9a6448eb6e904a77d9f8, type: 2}
   burntPattySO: {fileID: 11400000, guid: 5cc652bbf0be70b48a3a07e8503829e2, type: 2}
+  griddle: {fileID: 0}
 --- !u!82 &8418293969089837816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -701,6 +702,7 @@ GameObject:
   - component: {fileID: 2844364841015853658}
   - component: {fileID: 462021586476446250}
   - component: {fileID: 5087476126885945451}
+  - component: {fileID: 7110195193478221895}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -809,6 +811,19 @@ MonoBehaviour:
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
   targetTags: []
   noHoverMat: {fileID: 2100000, guid: 0c4c90295c3528041a0dbfcb588d9337, type: 2}
+--- !u!114 &7110195193478221895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274580970643581158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b451f25e69b0544a16ddfd87f56704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketInteractable: {fileID: 0}
 --- !u!1001 &1408858681050513186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1167,6 +1182,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient Info Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5196174049644801434, guid: 26b57b8c014c0c44f8b2c6207f6f2e7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1231,7 +1251,7 @@ PrefabInstance:
     - target: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6848739074368699838, guid: f1419c2a3f5ecf44e824039f908fea60,
         type: 3}
@@ -1370,6 +1390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2674947483099871772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6848739073373570981, guid: f1419c2a3f5ecf44e824039f908fea60,
+    type: 3}
+  m_PrefabInstance: {fileID: 8796877483241323961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2674947484092874755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60,

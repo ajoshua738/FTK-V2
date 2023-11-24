@@ -7,11 +7,15 @@ public class CheckRecipe : MonoBehaviour
 
     
     public List<IngredientSO> ingredients;
-   
+
+  
+  
+  
   
     public RecipeSO originalRecipeSO;
     public RecipeSO newRecipeSO;
     public Dictionary<string, float> ingredientAmounts;
+    public PerformanceTracker performanceTracker;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,19 +46,23 @@ public class CheckRecipe : MonoBehaviour
                     if (foundIngredient.ingredientAmount < recipeIngredient.ingredientAmount)
                     {
                         Debug.Log(foundIngredient.indgredientName + " amount is lower than required!");
+                        performanceTracker.score -= 10;
                     }
                     else if (foundIngredient.ingredientAmount > recipeIngredient.ingredientAmount)
                     {
                         Debug.Log(foundIngredient.indgredientName + " amount is higher than required!");
+                        performanceTracker.score -= 10;
                     }
                     else
                     {
                         Debug.Log(foundIngredient.indgredientName + " amount matches the required amount.");
+                        performanceTracker.score += 10;
                     }
                 }
                 else
                 {
                     Debug.Log("Ingredient not found: " + recipeIngredient.indgredientName);
+                    performanceTracker.score -= 20;
                 }
             }
         }
@@ -62,6 +70,9 @@ public class CheckRecipe : MonoBehaviour
         {
             Debug.LogError("RecipeSO is not assigned!");
         }
+
+        performanceTracker.checkScore();
+
     }
     private void OnTriggerEnter(Collider other)
     {

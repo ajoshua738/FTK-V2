@@ -483,7 +483,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 0
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 10
+  m_MaxRaycastDistance: 50
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 12
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_ConeCastAngle: 3
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 2147483681
+    m_Bits: 2147483937
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -1259,8 +1259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 601212179042127711}
-  m_MoveSpeed: 5
-  m_EnableStrafe: 1
+  m_MoveSpeed: 2
+  m_EnableStrafe: 0
   m_EnableFly: 0
   m_UseGravity: 1
   m_GravityApplicationMode: 1
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_System: {fileID: 601212179042127711}
   m_TurnSpeed: 60
   m_LeftHandTurnAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Left Hand Turn
       m_Type: 0
@@ -1361,7 +1361,8 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 1010738217276881514, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
   m_RightHandTurnAction:
     m_UseReference: 1
     m_Action:
@@ -2544,7 +2545,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 0
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 10
+  m_MaxRaycastDistance: 50
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 12
@@ -2561,7 +2562,7 @@ MonoBehaviour:
   m_ConeCastAngle: 3
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 2147483681
+    m_Bits: 2147483937
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -3380,7 +3381,7 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 0
-  m_ImproveAccuracyWithSphereCollider: 1
+  m_ImproveAccuracyWithSphereCollider: 0
   m_PhysicsLayerMask:
     serializedVersion: 2
     m_Bits: 129
@@ -3477,8 +3478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317eb018e942e89459efd38236674d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
+  rightHand: {fileID: 5079254509501719266}
+  leftHand: {fileID: 2102948657821292336}
 --- !u!1 &5794703082798064861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,7 +5074,7 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 0
-  m_ImproveAccuracyWithSphereCollider: 1
+  m_ImproveAccuracyWithSphereCollider: 0
   m_PhysicsLayerMask:
     serializedVersion: 2
     m_Bits: 129
@@ -5170,8 +5171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317eb018e942e89459efd38236674d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHand: {fileID: 0}
-  leftHand: {fileID: 0}
+  rightHand: {fileID: 5079254509501719266}
+  leftHand: {fileID: 2102948657821292336}
 --- !u!1 &9064585936808518081
 GameObject:
   m_ObjectHideFlags: 0

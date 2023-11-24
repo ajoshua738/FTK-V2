@@ -22,6 +22,7 @@ TagManager:
   - Unit Text
   - Name Text
   - Amount Text
+  - Dial
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Post Processing
   - Sliceable
   - Ingredient
-  - 
+  - Ignore
   - 
   - 
   - 

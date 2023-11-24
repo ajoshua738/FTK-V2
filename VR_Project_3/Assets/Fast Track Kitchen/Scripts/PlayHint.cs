@@ -1,23 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class PlayHint : MonoBehaviour
 {
-    public GameObject prefab;  // GameObject to get materials from
-    public AudioSource audioSource;   // Audio source for hint
 
-    public Material[] defaultMaterials;  // Array to store materials
-    public Material[] glowMaterials;
-    public Material glowMat;
-    public Material defMat;
-
-    Renderer prefabRenderer;
+    public GameObject model;
+  
+    public AudioSource hintSound;
+ 
     private void Start()
     {
-        prefabRenderer = prefab.GetComponent<Renderer>(); // get the renderer
-      
-    
+        model.SetActive(false);
     }
 
     // Trigger hint effect
@@ -27,27 +22,18 @@ public class PlayHint : MonoBehaviour
         StartCoroutine(EnableGlowForDuration(10f));
 
         // Play hint audio
-        audioSource.Play();
+        hintSound.Play();
     }
 
     private IEnumerator EnableGlowForDuration(float duration)
     {
 
-        prefabRenderer.materials = glowMaterials;
+        model.SetActive(true);
 
 
         yield return new WaitForSeconds(duration);
 
-        // Disable the glow material after duration
-        prefabRenderer.materials = defaultMaterials;
+        model.SetActive(false);
     }
 
-    
-
-    public void SetGlowMat()
-    {
-        //get the initial materials then add the glow mat
-        glowMaterials = prefabRenderer.materials;
-        glowMaterials[1] = glowMat;
-    }
 }

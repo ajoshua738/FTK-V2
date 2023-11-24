@@ -21,7 +21,7 @@ public class PattyStateManager : MonoBehaviour
     public GameObject burnSmoke;
 
 
-    public GameObject progressUI;
+    public GameObject progressBarUI;
     public Image img;
 
 
@@ -31,33 +31,39 @@ public class PattyStateManager : MonoBehaviour
 
 
 
-    public float cookTime = 10.0f; //Time it takes to cook the food
-    public float cookTimer = 0f; //Keeps track of total time in seconds that has passed
+    
     public float timer = 0f; //Timer to keep track of how many seconds passsed, gets reset after passing the interval
     
-    public float cookInterval = 0.0f; // How many seconds should it take to update the progress
+   
     public bool isCooking = false;
-  
-    public float increment = 0;// the value to add to change the material
 
+   
+
+
+    public float progress;
+    public float lowTempProgress;
+    public float mediumTempProgress;
+    public float highTempProgress;
 
     public Ingredient ingredient;
     public IngredientSO cookedPattySO;
     public IngredientSO burntPattySO;
 
+
+    public Griddle griddle = null;
     
     // Start is called before the first frame update
     void Start()
     {
-        cookInterval = cookTime / 10.0f;
-        progressUI.SetActive(false);
+        
+        progressBarUI.SetActive(false);
         cookSmoke.SetActive(false);
         burnSmoke.SetActive(false);
         //burger material stuff
 
         Renderer rend = pattyObj.GetComponent<Renderer>();
         pattyMat = rend.material;
-        //
+        
 
         currentState = RawState;
         currentState.EnterState(this);

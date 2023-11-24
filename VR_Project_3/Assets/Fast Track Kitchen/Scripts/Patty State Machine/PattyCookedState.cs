@@ -3,7 +3,7 @@ using UnityEngine;
 public class PattyCookedState : PattyBaseState
 {
 
-    
+    bool hasCalledIsCookingEvent = false;
 
     public override void EnterState(PattyStateManager patty)
     {
@@ -12,9 +12,10 @@ public class PattyCookedState : PattyBaseState
 
         patty.img.fillAmount = 0;
         patty.img.color = Color.red;
-        patty.cookTimer = 0;
-        patty.isCooking = true;
-        patty.increment = 0;
+        //patty.cookTimer = 0;
+        
+        //patty.increment = 0;
+        patty.progress = 0;
     }
 
     public override void OnCollisionEnter(PattyStateManager patty, Collision collision)
@@ -22,10 +23,9 @@ public class PattyCookedState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
+            patty.griddle = other.GetComponent<Griddle>();
             patty.isCooking = true;
-            patty.grillSound.Play();
-            patty.cookSmoke.SetActive(true);
-            patty.progressUI.SetActive(true);
+
         }
     }
 
@@ -35,39 +35,73 @@ public class PattyCookedState : PattyBaseState
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
             patty.isCooking = false;
-            patty.grillSound.Stop();
-            patty.cookSmoke.SetActive(false);
-            patty.progressUI.SetActive(false);
+            IsNotCookingEvents(patty);
         }
     }
 
+    public void IsCookingEvents(PattyStateManager patty)
+    {
+
+        patty.grillSound.Play();
+        patty.cookSmoke.SetActive(true);
+        patty.progressBarUI.SetActive(true);
+    }
+
+    public void IsNotCookingEvents(PattyStateManager patty)
+    {
+
+        patty.grillSound.Stop();
+        patty.cookSmoke.SetActive(false);
+        patty.progressBarUI.SetActive(false);
+    }
+
+
     public override void UpdateState(PattyStateManager patty)
     {
-        if (patty.isCooking)
+
+
+        if (patty.griddle.isOn && patty.isCooking)
         {
-            //Debug.Log("Is cooking");
             patty.timer += Time.deltaTime;
 
-
-            if (patty.timer >= patty.cookInterval)
+            if (!hasCalledIsCookingEvent)
             {
-
-                patty.increment += 0.1f;
-                patty.cookTimer += patty.cookInterval;
-                patty.timer = 0f;
-                patty.img.fillAmount = patty.increment;
+                hasCalledIsCookingEvent = true;
+                IsCookingEvents(patty);
             }
 
-            if (patty.cookTimer >= patty.cookTime)
+            if (patty.timer >= 1)
             {
-                patty.isCooking = false;
-                //Debug.Log("Is burnt");
-                patty.SwitchState(patty.BurntState);
+                if (patty.griddle.temp == 0)
+                {
+                    patty.progress += patty.lowTempProgress;
+
+                }
+                else if (patty.griddle.temp == 1)
+                {
+                    patty.progress += patty.mediumTempProgress;
+
+                }
+                else
+                {
+                    patty.progress += patty.highTempProgress;
+                }
+
+              
+                patty.img.fillAmount = patty.progress;
+
+                if (patty.progress >= 1)
+                {
+                    patty.progress = 1;
+                    patty.SwitchState(patty.CookedState);
+                }
+                patty.timer = 0;
             }
+
         }
         else
         {
-           // Debug.Log("Not cooking");
+            hasCalledIsCookingEvent = false;
         }
     }
 }

@@ -1,11 +1,12 @@
+using System.IO;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PattyRawState : PattyBaseState
 {
-   
 
+    bool hasCalledIsCookingEvent = false;
 
     public override void EnterState(PattyStateManager patty)
     {
@@ -16,33 +17,49 @@ public class PattyRawState : PattyBaseState
 
     public override void UpdateState(PattyStateManager patty)
     {
-        if(patty.isCooking)
+        
+        if (patty.griddle.isOn && patty.isCooking)
         {
-            //Debug.Log("Is cooking");
             patty.timer += Time.deltaTime;
            
-
-            //Update Cook progress every 1 second
-            if(patty.timer >= patty.cookInterval)
+            if(!hasCalledIsCookingEvent)
             {
-                patty.increment += 0.1f;
-                patty.pattyMat.SetFloat("_Blend", patty.increment);
-                patty.cookTimer += patty.cookInterval;
-                patty.timer = 0f;
-                patty.img.fillAmount = patty.increment;
+                hasCalledIsCookingEvent = true;
+                IsCookingEvents(patty);
             }
 
-            //Cooked at 10 seconds
-            if (patty.cookTimer >= patty.cookTime)
+            if(patty.timer >= 1)
             {
-                patty.isCooking = false;
-                //Debug.Log("Is cooked");
-                patty.SwitchState(patty.CookedState);
+                if (patty.griddle.temp == 0)
+                {
+                    patty.progress += patty.lowTempProgress;
+                  
+                }
+                else if (patty.griddle.temp == 1)
+                {
+                    patty.progress += patty.mediumTempProgress;
+                
+                }
+                else
+                {
+                    patty.progress += patty.highTempProgress;
+                }
+
+                patty.pattyMat.SetFloat("_Blend", patty.progress);
+                patty.img.fillAmount = patty.progress;
+
+                if (patty.progress >= 1)
+                {
+                    patty.progress = 1;
+                    patty.SwitchState(patty.CookedState);
+                }
+                patty.timer = 0;
             }
+
         }
         else
         {
-            //Debug.Log("Not cooking");
+            hasCalledIsCookingEvent = false;
         }
 
     }
@@ -52,22 +69,35 @@ public class PattyRawState : PattyBaseState
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
+            patty.griddle = other.GetComponent<Griddle>();
             patty.isCooking = true;
-            patty.grillSound.Play();
-            patty.cookSmoke.SetActive(true);
-            patty.progressUI.SetActive(true);
+          
+          
         }
     }
 
+    public void IsCookingEvents(PattyStateManager patty)
+    {
+       
+        patty.grillSound.Play();
+        patty.cookSmoke.SetActive(true);
+        patty.progressBarUI.SetActive(true);
+    }
+
+    public void IsNotCookingEvents(PattyStateManager patty)
+    {
+        
+        patty.grillSound.Stop();
+        patty.cookSmoke.SetActive(false);
+        patty.progressBarUI.SetActive(false);
+    }
     public override void OnCollisionExit(PattyStateManager patty, Collision collision)
     {
         GameObject other = collision.gameObject;
         if (other.CompareTag("KitchenEquipment/Griddle"))
         {
             patty.isCooking = false;
-            patty.grillSound.Stop();
-            patty.cookSmoke.SetActive(false);
-            patty.progressUI.SetActive(false);
+            IsNotCookingEvents(patty);
         }
     }
 }
