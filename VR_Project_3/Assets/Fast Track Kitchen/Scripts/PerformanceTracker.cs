@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class PerformanceTracker : MonoBehaviour
 {
@@ -9,16 +10,19 @@ public class PerformanceTracker : MonoBehaviour
     public int score = 0;
     public int maxScore = 0;
     public string grade;
+    public string fileName;
 
-   
+    public TMP_Text timeText;
+    public TMP_Text scoreText;
+    public TMP_Text gradeText;
 
-  
+    //burger level = 110
+
 
     private void Awake()
     {
         SaveSystem.Init();
       
-   
     }
 
     // Start is called before the first frame update
@@ -39,15 +43,15 @@ public class PerformanceTracker : MonoBehaviour
 
      
 
-        if (score >= maxScore / 1.2)
+        if (score >= (maxScore / 1.2))
         {
             grade = "A";
         }
-        else if (score >= maxScore / 1.5 && score < maxScore / 1.5)
+        else if (score >= (maxScore / 1.5) && score < (maxScore / 1.2))
         {
             grade = "B";
         }
-        else if (score >= maxScore / 2 && score < maxScore / 1.5)
+        else if (score >= (maxScore / 2) && score < (maxScore / 1.5))
         {
             grade = "C";
         }
@@ -57,6 +61,9 @@ public class PerformanceTracker : MonoBehaviour
         }
         Debug.Log("Time taken : " + time);
         Debug.Log("Grade : " + grade);
+
+
+
 
         PerformanceData data = new PerformanceData
         {
@@ -68,8 +75,12 @@ public class PerformanceTracker : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         Debug.Log(json);
 
-        SaveSystem.Save(json, "/BurgerLevel.json");
-      ;
+        SaveSystem.Save(json, "/" + fileName);
+
+        timeText.text = data.time.ToString();
+        scoreText.text = data.score.ToString();
+        gradeText.text = data.grade.ToString();
+
 
     }
 

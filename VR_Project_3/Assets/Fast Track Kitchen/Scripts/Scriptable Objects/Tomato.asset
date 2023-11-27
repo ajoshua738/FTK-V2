@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bb3e7f39ee2f14bb4cd6d5cbb22d38, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: 
-  indgredientName: Tomato
+  ingredientName: Tomato
   ingredientAmount: 1
   unit: slice

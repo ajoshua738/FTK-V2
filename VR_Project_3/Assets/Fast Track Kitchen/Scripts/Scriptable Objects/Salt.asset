@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bb3e7f39ee2f14bb4cd6d5cbb22d38, type: 3}
   m_Name: Salt
   m_EditorClassIdentifier: 
-  indgredientName: Salt
+  ingredientName: Salt
   ingredientAmount: 2
   unit: grams

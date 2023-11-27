@@ -87,10 +87,10 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             Ingredient ingredient = other.GetComponent<Ingredient>();
             IngredientSO ingredientSO = ingredient.GetIngredientSO();
             // Create a unique key for each ingredient including the unit
-            string ingredientKey = ingredientSO.indgredientName;
+            string ingredientKey = ingredientSO.ingredientName;
 
             // Check for the existence of the ingredient in the list based on the key
-            IngredientSO ingredientToRemove = ingredients.Find(x => (x.indgredientName) == ingredientKey);
+            IngredientSO ingredientToRemove = ingredients.Find(x => (x.ingredientName) == ingredientKey);
 
             // Remove the ingredient from the list
             if (ingredientToRemove != null)
@@ -120,7 +120,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             TextMeshProUGUI amountText = newText.transform.Find("Amount Text").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI unitText = newText.transform.Find("Unit Text").GetComponent<TextMeshProUGUI>();
 
-            nameText.text = ing.indgredientName;
+            nameText.text = ing.ingredientName;
             amountText.text = ing.ingredientAmount.ToString();
             unitText.text = ing.unit;
 
@@ -140,7 +140,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
         // Loop through the ingredients list
         for (int i = 0; i < ingredients.Count; i++)
         {
-            string currentIngredientName = ingredients[i].indgredientName;
+            string currentIngredientName = ingredients[i].ingredientName;
             float currentIngredientAmount = ingredients[i].ingredientAmount;
             string currentIngredientUnit = ingredients[i].unit; // Retrieve the unit
 
@@ -173,7 +173,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             // Create a new instance of IngredientSO using CreateInstance
             IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
             aggregatedIngredient.name = ingredientName;
-            aggregatedIngredient.indgredientName = ingredientName;
+            aggregatedIngredient.ingredientName = ingredientName;
             aggregatedIngredient.ingredientAmount = kvp.Value;
             aggregatedIngredient.unit = ingredientUnit; // Set the unit
 

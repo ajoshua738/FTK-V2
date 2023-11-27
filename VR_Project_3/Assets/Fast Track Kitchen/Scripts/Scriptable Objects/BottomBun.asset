@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bb3e7f39ee2f14bb4cd6d5cbb22d38, type: 3}
   m_Name: BottomBun
   m_EditorClassIdentifier: 
-  indgredientName: BottomBun
+  ingredientName: Bottom Bun
   ingredientAmount: 1
   unit: piece

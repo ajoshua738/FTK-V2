@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CheckRecipe : MonoBehaviour
 {
@@ -8,10 +9,14 @@ public class CheckRecipe : MonoBehaviour
     
     public List<IngredientSO> ingredients;
 
-  
-  
-  
-  
+
+   
+
+    public TMP_Text remarksText;
+
+    public GameObject recipeContainer;
+    public GameObject performanceContainer;
+
     public RecipeSO originalRecipeSO;
     public RecipeSO newRecipeSO;
     public Dictionary<string, float> ingredientAmounts;
@@ -19,6 +24,8 @@ public class CheckRecipe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        recipeContainer.SetActive(true);
+        performanceContainer.SetActive(false);
         newRecipeSO = Instantiate(originalRecipeSO);
     }
 
@@ -38,30 +45,34 @@ public class CheckRecipe : MonoBehaviour
             foreach (var recipeIngredient in recipeIngredients)
             {
                 // Find the corresponding ingredient in the ingredients list
-                IngredientSO foundIngredient = ingredients.Find(x => x.indgredientName == recipeIngredient.indgredientName);
+                IngredientSO foundIngredient = ingredients.Find(x => x.ingredientName == recipeIngredient.ingredientName);
 
                 if (foundIngredient != null)
                 {
                     // Compare the amounts
                     if (foundIngredient.ingredientAmount < recipeIngredient.ingredientAmount)
                     {
-                        Debug.Log(foundIngredient.indgredientName + " amount is lower than required!");
+                        Debug.Log(foundIngredient.ingredientName + " amount is lower than required!");
+                        remarksText.text += foundIngredient.ingredientName.ToString() + " amount is lower than required!\n\n";
                         performanceTracker.score -= 10;
                     }
                     else if (foundIngredient.ingredientAmount > recipeIngredient.ingredientAmount)
                     {
-                        Debug.Log(foundIngredient.indgredientName + " amount is higher than required!");
+                        Debug.Log(foundIngredient.ingredientName + " amount is higher than required!");
+                        remarksText.text += foundIngredient.ingredientName.ToString() + " amount is higher than required!\n\n";
                         performanceTracker.score -= 10;
                     }
                     else
                     {
-                        Debug.Log(foundIngredient.indgredientName + " amount matches the required amount.");
+                        Debug.Log(foundIngredient.ingredientName + " amount matches the required amount.");
+                        remarksText.text += foundIngredient.ingredientName.ToString() + " amount matches the required amount.\n\n";
                         performanceTracker.score += 10;
                     }
+
                 }
                 else
                 {
-                    Debug.Log("Ingredient not found: " + recipeIngredient.indgredientName);
+                    Debug.Log("Ingredient not found: " + recipeIngredient.ingredientName);
                     performanceTracker.score -= 20;
                 }
             }
@@ -72,7 +83,14 @@ public class CheckRecipe : MonoBehaviour
         }
 
         performanceTracker.checkScore();
+        EnableDisplayPerformance();
 
+    }
+
+    public void EnableDisplayPerformance()
+    {
+        recipeContainer.SetActive(false);
+        performanceContainer.SetActive(true);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -104,7 +122,7 @@ public class CheckRecipe : MonoBehaviour
         // Loop through the ingredients list
         for (int i = 0; i < ingredients.Count; i++)
         {
-            string currentIngredientName = ingredients[i].indgredientName;
+            string currentIngredientName = ingredients[i].ingredientName;
             float currentIngredientAmount = ingredients[i].ingredientAmount;
             string currentIngredientUnit = ingredients[i].unit; // Retrieve the unit
 
@@ -137,7 +155,7 @@ public class CheckRecipe : MonoBehaviour
             // Create a new instance of IngredientSO using CreateInstance
             IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
             aggregatedIngredient.name = ingredientName;
-            aggregatedIngredient.indgredientName = ingredientName;
+            aggregatedIngredient.ingredientName = ingredientName;
             aggregatedIngredient.ingredientAmount = kvp.Value;
             aggregatedIngredient.unit = ingredientUnit; // Set the unit
 
@@ -159,7 +177,7 @@ public class CheckRecipe : MonoBehaviour
             // Loop through the ingredients in the recipeSO
             foreach (var recipeIngredient in recipeIngredients)
             {
-                string currentIngredientName = recipeIngredient.indgredientName;
+                string currentIngredientName = recipeIngredient.ingredientName;
                 float currentIngredientAmount = recipeIngredient.ingredientAmount;
                 string currentIngredientUnit = recipeIngredient.unit; // Retrieve the unit
 
@@ -196,7 +214,7 @@ public class CheckRecipe : MonoBehaviour
             // Create a new instance of IngredientSO using CreateInstance
             IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
             aggregatedIngredient.name = ingredientName;
-            aggregatedIngredient.indgredientName = ingredientName;
+            aggregatedIngredient.ingredientName = ingredientName;
             aggregatedIngredient.ingredientAmount = kvp.Value;
             aggregatedIngredient.unit = ingredientUnit; // Set the unit
             newRecipeSO.ingredientsSOList.Add(aggregatedIngredient);

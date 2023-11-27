@@ -75,7 +75,7 @@ public class UIDisplayIngredient : MonoBehaviour
                 Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
                 IngredientSO ingredientSO = ingredient.GetIngredientSO();
 
-                string ingredientName = ingredientSO.indgredientName;
+                string ingredientName = ingredientSO.ingredientName;
                 float amount = ingredientSO.ingredientAmount;
                 string unit = ingredientSO.unit;
 
@@ -151,7 +151,7 @@ public class UIDisplayIngredient : MonoBehaviour
             Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
             IngredientSO ingredientSO = ingredient.GetIngredientSO();
 
-            string ingredientName = ingredientSO.indgredientName;
+            string ingredientName = ingredientSO.ingredientName;
 
             if (displayedIngredients.ContainsKey(ingredientName))
             {

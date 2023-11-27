@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5423886133724446025}
   - component: {fileID: 1541087742091039457}
   - component: {fileID: 5166734032421804628}
-  - component: {fileID: 2601630985967391594}
   m_Layer: 8
   m_Name: Ketchup
   m_TagString: Untagged
@@ -283,19 +282,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.084017634, y: 0.0058102566, z: 0.08401763}
   m_Center: {x: -0.00023406744, y: 0.00045078946, z: -0.0002340674}
---- !u!114 &2601630985967391594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963356406753388192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b451f25e69b0544a16ddfd87f56704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  socketInteractable: {fileID: 0}
 --- !u!1 &5359682226323910616
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +293,7 @@ GameObject:
   - component: {fileID: 87696237104116581}
   - component: {fileID: 5327688152818846190}
   - component: {fileID: 4804002435442077199}
+  - component: {fileID: 3094856845177721562}
   m_Layer: 0
   m_Name: Socket
   m_TagString: Untagged
@@ -415,6 +402,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.080266595, y: 0.014304161, z: 0.08026659}
   m_Center: {x: 0.0005877614, y: 0.010941982, z: 0.0005877614}
+--- !u!114 &3094856845177721562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359682226323910616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b451f25e69b0544a16ddfd87f56704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketInteractable: {fileID: 0}
 --- !u!1 &7375120617407447874
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ public class PattyRawState : PattyBaseState
 
     public override void UpdateState(PattyStateManager patty)
     {
+        if(patty.griddle == null)
+        {
+            return;
+        }
         
         if (patty.griddle.isOn && patty.isCooking)
         {
