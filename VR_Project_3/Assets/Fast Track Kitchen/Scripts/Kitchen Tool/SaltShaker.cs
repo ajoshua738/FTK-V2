@@ -12,6 +12,7 @@ public class SaltShaker : MonoBehaviour
     public LayerMask layerMask;
     private GenerateReticle generateReticle;
     public string parentTag;
+    public string ingredientTag;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class SaltShaker : MonoBehaviour
         // Instantiate the ketchup GameObject at the hit point of the raycast
         if (Physics.Raycast(origin.position, Vector3.down, out RaycastHit hit, 2.0f, layerMask) && generateReticle.isPouring)
         {
-            if (hit.collider.gameObject.CompareTag("Ingredient/RawBurgerPatty"))
+            if (hit.collider.gameObject.CompareTag(ingredientTag))
             {
                 Transform rawBurgerPatty = hit.collider.transform;
 

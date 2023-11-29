@@ -12,14 +12,32 @@ public class Stove : MonoBehaviour
     public float maxScale = 0.02f; // Maximum scale when knobValue is 1
     public List<GameObject> flames;
     public bool isOn = false;
+    public int temp;
+    public GameObject lowText;
+    public GameObject mediumText;
+    public GameObject highText;
+    public XRKnob dial;
+    public bool hasPan = false;
     // Start is called before the first frame update
     void Start()
     { 
-        GetComponent<XRKnob>().onValueChange.AddListener(TurnOn);
+        dial.onValueChange.AddListener(TurnOn);
         flame.SetActive(false);
-        
+        lowText.SetActive(false);
+        mediumText.SetActive(false);
+        highText.SetActive(false);
+        AddFlames();
+
     }
 
+    public void AddFlames()
+    {
+        for(int i = 0; i < 25;i++)
+        {
+            Transform child = flame.transform.GetChild(i); // Get the child at index 'i'
+            flames.Add(child.gameObject); // Add the child object to the list
+        }
+    }
     
     public void TurnOn(float knobValue)
     {
@@ -29,6 +47,10 @@ public class Stove : MonoBehaviour
         if (knobValue == 0)
         {
             flame.SetActive(false);
+            lowText.SetActive(false);
+            mediumText.SetActive(false);
+            highText.SetActive(false);
+
             isOn = false;
 
         }
@@ -45,6 +67,69 @@ public class Stove : MonoBehaviour
             isOn = true;
         }
 
+      
+        if (knobValue >= 0.1 && knobValue < 0.4)
+        {
+            isOn = true;
+            SetLowTemp();
+        }
+        else if (knobValue >= 0.4 && knobValue < 0.7)
+        {
+            isOn = true;
+            SetMediumTemp();
+        }
+        else if (knobValue > 0.7)
+        {
+            isOn = true;
+            SetHighTemp();
+        }
 
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("KitchenTool/Pan"))
+        {
+            print("Pan entered");
+            hasPan = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("KitchenTool/Pan"))
+        {
+            print("Pan left");
+            hasPan = false;
+        }
+    }
+
+    public void SetLowTemp()
+    {
+        temp = 1;
+        lowText.SetActive(true);
+        mediumText.SetActive(false);
+        highText.SetActive(false);
+    }
+
+    public void SetMediumTemp()
+    {
+        temp = 2;
+        lowText.SetActive(false);
+        mediumText.SetActive(true);
+        highText.SetActive(false);
+    }
+
+    public void SetHighTemp()
+    {
+        temp = 3;
+        lowText.SetActive(false);
+        mediumText.SetActive(false);
+        highText.SetActive(true);
+    }
+
+
+
+
 }

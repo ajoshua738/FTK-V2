@@ -613,7 +613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ab8d9e099ffb061488bf53e045d266a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e15927d6b27dbe4884d3f794dfe845b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7026,6 +7026,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485175249}
+  - component: {fileID: 485175250}
   m_Layer: 0
   m_Name: Medium Level 1
   m_TagString: Untagged
@@ -7050,6 +7051,22 @@ Transform:
   - {fileID: 4790596026253588611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &485175250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485175248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3925e86f26691438d65d61dcbbd9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 1752774866}
+  score: {fileID: 1902988594}
+  grade: {fileID: 1248523825}
+  fileName: EnglishBreakfastLevel.json
 --- !u!1 &485679643
 GameObject:
   m_ObjectHideFlags: 0
@@ -8672,7 +8689,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594180007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8680,7 +8697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.14, y: 3.72}
+  m_AnchoredPosition: {x: -2.64, y: 3.72}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &594180009
@@ -8716,7 +8733,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: BURGER
+  m_Text: "ENGLISH \nBREAKFAST"
 --- !u!222 &594180010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12854,15 +12871,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Teach player to prepare a burger.
+  m_text: 'Teach player to prepare a simple breakfast.
 
 
-    Cooking Skills involved are cutting,
-    grilling and mixing.
+    Cooking Skills involved
+    are frying and mixing.
 
 
-    The player will use the griddle to grill the patty,
-    use kitchen knife to cut up vegetables and learn to season the patty'
+    The player will learn to use the stove to fry the
+    ingredients'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d96efdb64f2fd2a4f82d4ebf9a50f1bf, type: 2}
   m_sharedMaterial: {fileID: 330659742904912885, guid: d96efdb64f2fd2a4f82d4ebf9a50f1bf,
@@ -19348,7 +19365,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418612989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19357,8 +19374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208, y: 230.00003}
-  m_SizeDelta: {x: 213.5, y: 78.3}
+  m_AnchoredPosition: {x: 166, y: 230.00003}
+  m_SizeDelta: {x: 333, y: 78.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418612991
 MonoBehaviour:
@@ -24112,7 +24129,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -8, y: 0}
-  m_SizeDelta: {x: 206.9, y: 37.6}
+  m_SizeDelta: {x: 264.7, y: 37.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752774866
 MonoBehaviour:
@@ -34153,8 +34170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 230.00003}
-  m_SizeDelta: {x: 262.9, y: 78.3}
+  m_AnchoredPosition: {x: 160, y: 230.00003}
+  m_SizeDelta: {x: 333, y: 78.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &6149242841289524310
 MeshFilter:
@@ -35170,7 +35187,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2, y: 0}
-  m_SizeDelta: {x: 238.8, y: 61}
+  m_SizeDelta: {x: 264.7, y: 61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8273911170494274385
 Canvas:
@@ -35483,14 +35500,14 @@ SceneRoots:
   - {fileID: 1488392513}
   - {fileID: 1291190659}
   - {fileID: 930619584}
-  - {fileID: 394807947}
   - {fileID: 7821296325038567175}
-  - {fileID: 88922277}
-  - {fileID: 416849020}
+  - {fileID: 1355456418}
+  - {fileID: 2017042240}
   - {fileID: 485175249}
   - {fileID: 673160588}
   - {fileID: 483573479}
-  - {fileID: 1355456418}
-  - {fileID: 2017042240}
+  - {fileID: 88922277}
+  - {fileID: 416849020}
+  - {fileID: 394807947}
   - {fileID: 5426391166335181809}
   - {fileID: 6971606155517774515}

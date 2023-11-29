@@ -30,6 +30,9 @@ public class SpawnIngredient : MonoBehaviour
             }
 
         }
+
+        // Draw the raycast for visualization
+        Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.red);
     }
 
 }

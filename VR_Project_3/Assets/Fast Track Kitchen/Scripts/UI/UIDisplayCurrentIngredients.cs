@@ -25,6 +25,9 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
     public GameObject UIContainer; // The kitchen tool that holds the UI
     public Transform playerTransform;
     public List<GameObject> UIObjects;
+
+    public float distanceToPlayer;
+    public float angleToPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +38,34 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        //distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
 
+
+        //if (ingredients.Count <= 0)
+        //{
+        //    UIContainer.SetActive(false);
+        //}
+        //else
+        //{
+        //    if (distanceToPlayer <= maxDistance)
+        //    {
+        //        // Check if the plate is within the view angle
+        //        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+        //        angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+
+        //        if (angleToPlayer <= maxViewAngle)
+        //        {
+        //            UIContainer.SetActive(true);
+        //            return;
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        UIContainer.SetActive(false);
+        //    }
+        //}
 
         if (ingredients.Count <= 0)
         {
@@ -45,28 +73,32 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
         }
         else
         {
-            if (distanceToPlayer <= maxDistance)
-            {
-                // Check if the plate is within the view angle
-                Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-                float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-                if (angleToPlayer <= maxViewAngle)
-                {
-                    UIContainer.SetActive(true);
-                    return;
-                }
-
-            }
-            else
-            {
-                UIContainer.SetActive(false);
-            }
+            UIContainer.SetActive(true);
         }
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
+        {
+            Ingredient ingredient = collision.gameObject.GetComponent<Ingredient>();
+            IngredientSO ingredientSO = ingredient.GetIngredientSO();
+            ingredients.Add(ingredientSO);
 
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
+        {
+            Ingredient ingredient = collision.gameObject.GetComponent<Ingredient>();
+            IngredientSO ingredientSO = ingredient.GetIngredientSO();
+            ingredients.Add(ingredientSO);
+
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

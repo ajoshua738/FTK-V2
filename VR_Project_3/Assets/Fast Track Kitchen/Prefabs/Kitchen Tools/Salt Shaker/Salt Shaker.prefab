@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6260716128326815981
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8961553351971856917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1346,6 +1346,7 @@ GameObject:
   - component: {fileID: 983846738402441103}
   - component: {fileID: 1742133187209682614}
   - component: {fileID: 5389825134209976451}
+  - component: {fileID: 4765400303523329672}
   m_Layer: 0
   m_Name: Salt Shaker
   m_TagString: Untagged
@@ -1769,3 +1770,16 @@ MonoBehaviour:
   UIContainer: {fileID: 1796421250362037095}
   canBeUpdated: 1
   isSockted: 0
+--- !u!114 &4765400303523329672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954898003830337209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e7730d80f161740a62a536aa44e07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientSO: {fileID: 11400000, guid: ee67fda2412412e4ba1af7fe4b1c972a, type: 2}

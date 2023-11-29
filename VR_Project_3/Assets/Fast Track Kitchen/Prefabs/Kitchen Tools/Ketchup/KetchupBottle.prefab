@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1698823657857335254
 Transform:
   m_ObjectHideFlags: 0
@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient Info Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5196174049644801434, guid: 26b57b8c014c0c44f8b2c6207f6f2e7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -409,17 +414,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b87865e5e0fdaf141b11cd6d39e6120d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.892
+      value: -5.1765165
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b87865e5e0fdaf141b11cd6d39e6120d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.319
+      value: 7.3370833
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b87865e5e0fdaf141b11cd6d39e6120d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.407
+      value: -11.617741
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b87865e5e0fdaf141b11cd6d39e6120d,
         type: 3}
@@ -619,7 +624,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5261568871684610919
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -73,7 +73,7 @@ public class CheckRecipe : MonoBehaviour
                 else
                 {
                     Debug.Log("Ingredient not found: " + recipeIngredient.ingredientName);
-                    performanceTracker.score -= 20;
+                    performanceTracker.score -= 5;
                 }
             }
         }

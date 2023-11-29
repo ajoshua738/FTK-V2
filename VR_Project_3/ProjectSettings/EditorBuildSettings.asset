@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UITest.unity
     guid: 0ea80a9a5837e5f43abe46f6042e8b8f
   - enabled: 1
-    path: Assets/Scenes/Level Design 1.unity
+    path: Assets/Scenes/Burger Level.unity
     guid: 38b4978c00a6f9e45bd236d27d6d746b
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a0351ed6a49cab440a3230c0edfcc62c,

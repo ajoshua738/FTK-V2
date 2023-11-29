@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &802737751343008254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3098765913266697866
 Transform:
   m_ObjectHideFlags: 0
@@ -1309,6 +1309,7 @@ GameObject:
   - component: {fileID: 1315624586368107661}
   - component: {fileID: 1207109387207832304}
   - component: {fileID: 1694302781767481526}
+  - component: {fileID: 513859304922215291}
   m_Layer: 0
   m_Name: 'Pepper Shaker '
   m_TagString: Untagged
@@ -1732,6 +1733,19 @@ MonoBehaviour:
   UIContainer: {fileID: 7941474214876751781}
   canBeUpdated: 1
   isSockted: 0
+--- !u!114 &513859304922215291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730880627653584301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e7730d80f161740a62a536aa44e07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientSO: {fileID: 11400000, guid: b00c9533b9c8abe4b97e7f5a88d9b72f, type: 2}
 --- !u!1 &7941474214876751781
 GameObject:
   m_ObjectHideFlags: 0

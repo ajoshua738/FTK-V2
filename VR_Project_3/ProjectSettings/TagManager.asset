@@ -23,6 +23,12 @@ TagManager:
   - Name Text
   - Amount Text
   - Dial
+  - KitchenEquipment/Stove
+  - Ingredient/Egg
+  - Ingredient/Oil
+  - Ingredient/FriedEgg
+  - Ingredient/Bacon
+  - Ingredient/Sausage
   layers:
   - Default
   - TransparentFX
@@ -34,8 +40,8 @@ TagManager:
   - Sliceable
   - Ingredient
   - Ignore
-  - 
-  - 
+  - Kitchen Tool
+  - Item
   - 
   - 
   - 
