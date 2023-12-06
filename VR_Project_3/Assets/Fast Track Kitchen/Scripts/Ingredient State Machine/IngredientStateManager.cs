@@ -14,7 +14,7 @@ public class IngredientStateManager : MonoBehaviour
 
 
 
-    public AudioSource grillSound;
+    public AudioSource cookSound;
     public AudioSource burnSound;
 
 
@@ -43,6 +43,7 @@ public class IngredientStateManager : MonoBehaviour
     public GameObject burnSmoke;
     public GameObject burntObj;
     public GameObject ingredientObj;
+    public string kitchenEquipmentTag;
     // Start is called before the first frame update
     void Start()
     {

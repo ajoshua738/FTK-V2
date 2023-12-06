@@ -11,6 +11,7 @@ public class AddWater : MonoBehaviour
 
     private float timePassed = 0.0f; // Variable to keep track of time
     private float yIncrement = 0.0145f; // Y-axis increment per second
+    public GameObject waterIngredient;
   
 
     void Start()
@@ -28,6 +29,9 @@ public class AddWater : MonoBehaviour
             {
                 volume += 1.0f; // Add 1 to the volume
                 timePassed = 0.0f;
+                GameObject waterObj = Instantiate(waterIngredient,transform.position,Quaternion.identity);
+                waterObj.transform.SetParent(transform);
+               
 
                 water.transform.position = new Vector3(water.transform.position.x, water.transform.position.y + yIncrement, water.transform.position.z);
             }

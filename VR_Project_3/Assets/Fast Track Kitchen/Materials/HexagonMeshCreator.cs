@@ -61,7 +61,7 @@ public class HexagonMeshCreator : MonoBehaviour
 
         hexagonMesh.RecalculateNormals();
 
-        AssetDatabase.CreateAsset(hexagonMesh, "Assets/HexagonMesh.asset");
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.CreateAsset(hexagonMesh, "Assets/HexagonMesh.asset");
+        //AssetDatabase.SaveAssets();
     }
 }

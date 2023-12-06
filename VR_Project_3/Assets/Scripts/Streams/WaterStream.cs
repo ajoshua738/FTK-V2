@@ -10,10 +10,12 @@ public class WaterStream : MonoBehaviour
 
     private Coroutine pourRoutine = null;
 
-    public AddWater addwater;
+ 
 
 
     private Vector3 targetPosition = Vector3.zero;
+    public LayerMask layerMask;
+  
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class WaterStream : MonoBehaviour
     {
         MoveToPoistion(0, transform.position);
         MoveToPoistion(1, transform.position);
+    
     }
 
     
@@ -76,27 +79,13 @@ public class WaterStream : MonoBehaviour
 
         Ray ray = new Ray(transform.position, Vector3.down);
 
-        Physics.Raycast(ray, out hit, 2.0f);
+        Physics.Raycast(ray, out hit, 2.0f,layerMask);
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2.0f);
 
-        if(hit.collider.gameObject.tag == "Base")
-        {
-            addwater = hit.collider.gameObject.GetComponent<AddWater>();
-            addwater.isPouring = true;
-        }
-        else
-        {
-            if(addwater != null)
-            {
-                addwater.isPouring = false;
-            }
-       
-        }
-       
-       
-    
+     
 
         return endPoint;
+
     }
 
     private void MoveToPoistion(int index, Vector3 targetPosition)

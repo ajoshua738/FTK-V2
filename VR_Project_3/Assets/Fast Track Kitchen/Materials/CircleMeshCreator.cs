@@ -53,7 +53,7 @@ public class CircleMeshCreator : MonoBehaviour
         circleMesh.RecalculateNormals();
 
         // Optional: Save the circle mesh as an asset
-        AssetDatabase.CreateAsset(circleMesh, "Assets/CircleMesh.asset");
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.CreateAsset(circleMesh, "Assets/CircleMesh.asset");
+        //AssetDatabase.SaveAssets();
     }
 }

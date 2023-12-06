@@ -36,7 +36,7 @@ public class UIDisplayIngredientInfo : MonoBehaviour
 
     public void ShowInfo()
     {
-        print("Entered show info");
+     
         if (!isSockted)
         {
             UIContainer.SetActive(true);
@@ -46,7 +46,7 @@ public class UIDisplayIngredientInfo : MonoBehaviour
 
     public void HideInfo()
     {
-        print("Entered hide info");
+       
         UIContainer.SetActive(false);
         if (canBeUpdated)
         {

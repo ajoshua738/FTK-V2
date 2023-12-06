@@ -9,6 +9,7 @@ public class PourDetector : MonoBehaviour
 
     private bool isPouring = false;
     private WaterStream currentStream = null;
+    public float currentAngle = 0;
 
     private void Update()
     {
@@ -47,7 +48,7 @@ public class PourDetector : MonoBehaviour
 
     private float CalculatePourAngle()
     {
-        //print(transform.up.y * Mathf.Rad2Deg);
+        currentAngle = (transform.up.y * Mathf.Rad2Deg);
         return transform.up.y * Mathf.Rad2Deg;
     }
 

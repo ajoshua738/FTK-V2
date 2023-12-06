@@ -29,6 +29,8 @@ TagManager:
   - Ingredient/FriedEgg
   - Ingredient/Bacon
   - Ingredient/Sausage
+  - KitchenTool/Tray
+  - KitchenEquipment/Oven
   layers:
   - Default
   - TransparentFX
@@ -42,7 +44,7 @@ TagManager:
   - Ignore
   - Kitchen Tool
   - Item
-  - 
+  - Plate
   - 
   - 
   - 

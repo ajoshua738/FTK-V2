@@ -10,7 +10,7 @@ public class IngredientBurntState : IngredientBaseState
         ingredient.isCooking = false;
         ingredient.ingredient.ingredientSO = ingredient.burntSO;
         Debug.Log("burnt state");
-        ingredient.grillSound.Stop();
+        ingredient.cookSound.Stop();
         ingredient.burnSound.Play();
         ingredient.cookSmoke.SetActive(false);
         ingredient.burnSmoke.SetActive(true);

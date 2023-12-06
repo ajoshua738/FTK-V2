@@ -23,7 +23,7 @@ public class IngredientRawState : IngredientBaseState
 
     public override void OnTriggerEnter(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag("KitchenEquipment/Stove"))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
         {
             ingredient.stove = other.GetComponent<Stove>();
             ingredient.isCooking = true;
@@ -32,7 +32,7 @@ public class IngredientRawState : IngredientBaseState
 
     public override void OnTriggerExit(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag("KitchenEquipment/Stove"))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
         {
             ingredient.isCooking = false;
             IsNotCookingEvents(ingredient);
@@ -46,7 +46,7 @@ public class IngredientRawState : IngredientBaseState
             return;
         }
 
-        if(ingredient.isCooking && ingredient.stove.isOn && ingredient.stove.hasPan)
+        if(ingredient.isCooking && ingredient.stove.isOn && ingredient.stove.hasCorrectKitchenTool)
         {
             ingredient.timer += Time.deltaTime;
             if (!hasCalledIsCookingEvent)
@@ -95,7 +95,7 @@ public class IngredientRawState : IngredientBaseState
     public void IsCookingEvents(IngredientStateManager ingredient)
     {
 
-        ingredient.grillSound.Play();
+        ingredient.cookSound.Play();
         ingredient.cookSmoke.SetActive(true);
         ingredient.progressBarUI.SetActive(true);
     }
@@ -103,7 +103,7 @@ public class IngredientRawState : IngredientBaseState
     public void IsNotCookingEvents(IngredientStateManager ingredient)
     {
 
-        ingredient.grillSound.Stop();
+        ingredient.cookSound.Stop();
         ingredient.cookSmoke.SetActive(false);
         ingredient.progressBarUI.SetActive(false);
     }

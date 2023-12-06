@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Content.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Stove : MonoBehaviour
 {  
@@ -17,11 +18,18 @@ public class Stove : MonoBehaviour
     public GameObject mediumText;
     public GameObject highText;
     public XRKnob dial;
-    public bool hasPan = false;
+    public bool hasCorrectKitchenTool = false;
+    public string correctKitchenTool;
+    public XRSocketTagInteractor socket;
+    
     // Start is called before the first frame update
     void Start()
     { 
         dial.onValueChange.AddListener(TurnOn);
+        socket.selectEntered.AddListener(CheckItem);
+        socket.selectExited.AddListener(RemoveItem);
+        
+        
         flame.SetActive(false);
         lowText.SetActive(false);
         mediumText.SetActive(false);
@@ -29,9 +37,44 @@ public class Stove : MonoBehaviour
         AddFlames();
 
     }
+    private void Update()
+    {
+       
+    }
+
+    public void CheckItem(SelectEnterEventArgs args)
+    {
+        //IXRSelectInteractable obj = socket.GetOldestInteractableSelected();
+        //if(obj == null)
+        //{
+        //    return;
+        //}
+        //else if(obj.transform.CompareTag("KitchenTool/Pan"))
+        //{
+        //    hasCorrectKitchenTool = true;
+        //}
+        hasCorrectKitchenTool = true;
+      
+    }
+
+    public void RemoveItem(SelectExitEventArgs args)
+    {
+        //IXRSelectInteractable obj = socket.GetOldestInteractableSelected();
+        //if (obj == null)
+        //{
+        //    return;
+        //}
+        //else if (obj.transform.CompareTag("KitchenTool/Pan"))
+        //{
+        //    hasCorrectKitchenTool = false;
+        //}
+        hasCorrectKitchenTool = false;
+    }
+ 
 
     public void AddFlames()
     {
+
         for(int i = 0; i < 25;i++)
         {
             Transform child = flame.transform.GetChild(i); // Get the child at index 'i'
@@ -41,10 +84,10 @@ public class Stove : MonoBehaviour
     
     public void TurnOn(float knobValue)
     {
-        Debug.Log("knob value : "+knobValue);
+   
 
       
-        if (knobValue == 0)
+        if (knobValue < 0.1)
         {
             flame.SetActive(false);
             lowText.SetActive(false);
@@ -89,20 +132,20 @@ public class Stove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("KitchenTool/Pan"))
-        {
-            print("Pan entered");
-            hasPan = true;
-        }
+        //if(other.gameObject.CompareTag(correctKitchenTool))
+        //{
+        //    hasCorrectKitchenTool = true;
+        //}
+       
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("KitchenTool/Pan"))
-        {
-            print("Pan left");
-            hasPan = false;
-        }
+        //if (other.gameObject.CompareTag(correctKitchenTool))
+        //{
+        //    hasCorrectKitchenTool = false;
+        //}
+
     }
 
     public void SetLowTemp()

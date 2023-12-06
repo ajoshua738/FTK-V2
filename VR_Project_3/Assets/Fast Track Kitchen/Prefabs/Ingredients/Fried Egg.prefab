@@ -241,9 +241,9 @@ GameObject:
   - component: {fileID: 5867781273033741942}
   - component: {fileID: 2984107775091851066}
   - component: {fileID: 2648351469817600361}
-  - component: {fileID: 6401164028716471270}
   - component: {fileID: 36161783210041733}
   - component: {fileID: 3930123724807264224}
+  - component: {fileID: 2468131317044966463}
   m_Layer: 8
   m_Name: Fried Egg
   m_TagString: Ingredient/FriedEgg
@@ -488,36 +488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientSO: {fileID: 11400000, guid: 934115a134e5a3048ba80afb3ef27e07, type: 2}
---- !u!114 &6401164028716471270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6228678938595793469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c740354e12599e1469069fe1cabc19f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grillSound: {fileID: 36161783210041733}
-  burnSound: {fileID: 3930123724807264224}
-  progressBarUI: {fileID: 7041216995957012935}
-  img: {fileID: 7781862208674845122}
-  ingredient: {fileID: 2648351469817600361}
-  cookedSO: {fileID: 11400000, guid: 29b953e7c205dcc46b8ee9a059afdc67, type: 2}
-  burntSO: {fileID: 11400000, guid: e6b2b53078afdca4ba79c975d4eb3d6f, type: 2}
-  progress: 0
-  lowTempProgress: 0.016
-  mediumTempProgress: 0.03
-  highTempProgress: 0.1
-  stove: {fileID: 0}
-  isCooking: 0
-  timer: 0
-  cookSmoke: {fileID: 3155102867185765573}
-  burnSmoke: {fileID: 7227216038353128615}
-  burntObj: {fileID: 4157280747783105029}
-  ingredientObj: {fileID: 3554092187275693485}
 --- !u!82 &36161783210041733
 AudioSource:
   m_ObjectHideFlags: 0
@@ -710,6 +680,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2468131317044966463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6228678938595793469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d7aad703669e242ae5052c238c1eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookSound: {fileID: 36161783210041733}
+  burnSound: {fileID: 3930123724807264224}
+  progressBarUI: {fileID: 7041216995957012935}
+  img: {fileID: 7781862208674845122}
+  ingredient: {fileID: 0}
+  cookedSO: {fileID: 11400000, guid: 29b953e7c205dcc46b8ee9a059afdc67, type: 2}
+  burntSO: {fileID: 11400000, guid: e6b2b53078afdca4ba79c975d4eb3d6f, type: 2}
+  progress: 0
+  lowTempProgress: 0.016
+  mediumTempProgress: 0.03
+  highTempProgress: 0.1
+  stove: {fileID: 0}
+  isCooking: 0
+  timer: 0
+  cookSmoke: {fileID: 3155102867185765573}
+  burnSmoke: {fileID: 7227216038353128615}
+  burntObj: {fileID: 4157280747783105029}
+  ingredientObj: {fileID: 3554092187275693485}
+  kitchenEquipmentTag: KitchenEquipment/Stove
 --- !u!1 &6422456150814151689
 GameObject:
   m_ObjectHideFlags: 0

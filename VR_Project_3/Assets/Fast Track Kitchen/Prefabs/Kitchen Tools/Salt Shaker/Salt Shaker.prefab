@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 8965659219469623899}
   - component: {fileID: 5609887471782643070}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Hint Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1340,13 +1340,13 @@ GameObject:
   - component: {fileID: 8020976175596821664}
   - component: {fileID: 4959202109510386590}
   - component: {fileID: 4924720343841538040}
-  - component: {fileID: 2977822811495140438}
   - component: {fileID: 7430331740113685501}
   - component: {fileID: 3456804801923902386}
   - component: {fileID: 983846738402441103}
   - component: {fileID: 1742133187209682614}
   - component: {fileID: 5389825134209976451}
   - component: {fileID: 4765400303523329672}
+  - component: {fileID: 1765844967421272468}
   m_Layer: 0
   m_Name: Salt Shaker
   m_TagString: Untagged
@@ -1367,6 +1367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2273091979357267262}
   - {fileID: 4656749232455894101}
   - {fileID: 6283998443561615839}
   - {fileID: 6260716128326815981}
@@ -1588,20 +1589,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &2977822811495140438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954898003830337209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f06466b92947e42bb3805634bfd164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandModel: {fileID: 0}
-  rightHandModel: {fileID: 0}
 --- !u!65 &7430331740113685501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1644,6 +1631,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   parentTag: Ingredient/Salt
+  ingredientTag: Ingredient/FriedEgg
 --- !u!82 &983846738402441103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1783,3 +1771,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientSO: {fileID: 11400000, guid: ee67fda2412412e4ba1af7fe4b1c972a, type: 2}
+--- !u!114 &1765844967421272468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954898003830337209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2675897b4ab63f4e9140091f54543c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionDuration: 0.25
+  changeColorOnHover: 1
+  rend: {fileID: 2296056189690533677}
+  hoverColor: {r: 0, g: 0.5894128, b: 0.9803922, a: 1}
+  changeScaleOnHover: 1
+  obj: {fileID: 6283998443561615839}
+  scaleMultiplier: 1.1
+  changeColorOnActivate: 1
+  activateColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  playAudioOnHover: 1
+  hoverAudio: {fileID: 2295325207950862673}
+--- !u!1001 &6149828951058409870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 400380004415413044}
+    m_Modifications:
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053277505437370156, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+        type: 3}
+      propertyPath: m_Name
+      value: Hover Audio Source
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb638cd2b5f0bc24992f57b15b211ce0, type: 3}
+--- !u!4 &2273091979357267262 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5391707903929273520, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6149828951058409870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2295325207950862673 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5368913923482763487, guid: bb638cd2b5f0bc24992f57b15b211ce0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6149828951058409870}
+  m_PrefabAsset: {fileID: 0}

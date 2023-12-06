@@ -26,8 +26,8 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
     public Transform playerTransform;
     public List<GameObject> UIObjects;
 
-    public float distanceToPlayer;
-    public float angleToPlayer;
+    private float distanceToPlayer;
+    private float angleToPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,34 +38,34 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
 
 
-        //if (ingredients.Count <= 0)
-        //{
-        //    UIContainer.SetActive(false);
-        //}
-        //else
-        //{
-        //    if (distanceToPlayer <= maxDistance)
-        //    {
-        //        // Check if the plate is within the view angle
-        //        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        //        angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+        if (ingredients.Count <= 0)
+        {
+            UIContainer.SetActive(false);
+        }
+        else
+        {
+            if (distanceToPlayer <= maxDistance)
+            {
+                // Check if the plate is within the view angle
+                Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+                angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
-        //        if (angleToPlayer <= maxViewAngle)
-        //        {
-        //            UIContainer.SetActive(true);
-        //            return;
-        //        }
+                if (angleToPlayer <= maxViewAngle)
+                {
+                    UIContainer.SetActive(true);
+                    return;
+                }
 
-        //    }
-        //    else
-        //    {
-        //        UIContainer.SetActive(false);
-        //    }
-        //}
+            }
+            else
+            {
+                UIContainer.SetActive(false);
+            }
+        }
 
         if (ingredients.Count <= 0)
         {
@@ -102,7 +102,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.name);
+     
         if (other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
             Ingredient ingredient = other.GetComponent<Ingredient>();
@@ -111,6 +111,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
           
         }
     }
+  
 
     private void OnTriggerExit(Collider other)
     {

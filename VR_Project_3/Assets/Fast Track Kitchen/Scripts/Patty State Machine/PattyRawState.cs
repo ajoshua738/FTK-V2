@@ -1,6 +1,3 @@
-using System.IO;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PattyRawState : PattyBaseState

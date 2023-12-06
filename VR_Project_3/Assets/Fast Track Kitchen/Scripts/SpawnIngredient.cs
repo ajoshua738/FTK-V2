@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class SpawnIngredient : MonoBehaviour
@@ -32,7 +31,7 @@ public class SpawnIngredient : MonoBehaviour
         }
 
         // Draw the raycast for visualization
-        Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.red);
+        //Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.red);
     }
 
 }

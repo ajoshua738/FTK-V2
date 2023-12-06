@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 7584675308000636791}
   - component: {fileID: 5544826907974062920}
   - component: {fileID: 8062428620631738919}
-  - component: {fileID: 67525710821003862}
   - component: {fileID: 668922449472881342}
+  - component: {fileID: 4644546873779815136}
   m_Layer: 8
   m_Name: Bacon
   m_TagString: Ingredient/Bacon
@@ -533,7 +533,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &67525710821003862
+--- !u!114 &668922449472881342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,10 +542,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3415702828951183319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c740354e12599e1469069fe1cabc19f6, type: 3}
+  m_Script: {fileID: 11500000, guid: b7f06466b92947e42bb3805634bfd164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grillSound: {fileID: 5544826907974062920}
+  leftHandModel: {fileID: 0}
+  rightHandModel: {fileID: 0}
+--- !u!114 &4644546873779815136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415702828951183319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d7aad703669e242ae5052c238c1eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookSound: {fileID: 5544826907974062920}
   burnSound: {fileID: 8062428620631738919}
   progressBarUI: {fileID: 4986582454236107026}
   img: {fileID: 5726944499190233367}
@@ -563,20 +577,7 @@ MonoBehaviour:
   burnSmoke: {fileID: 7952034082826323350}
   burntObj: {fileID: 2315214977701883587}
   ingredientObj: {fileID: 7977723200528431837}
---- !u!114 &668922449472881342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3415702828951183319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f06466b92947e42bb3805634bfd164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandModel: {fileID: 0}
-  rightHandModel: {fileID: 0}
+  kitchenEquipmentTag: KitchenEquipment/Stove
 --- !u!1 &7977723200528431837
 GameObject:
   m_ObjectHideFlags: 0
