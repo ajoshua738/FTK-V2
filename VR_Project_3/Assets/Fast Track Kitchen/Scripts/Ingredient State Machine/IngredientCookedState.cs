@@ -7,11 +7,13 @@ public class IngredientCookedState : IngredientBaseState
     bool hasCalledIsCookingEvent = false;
     public override void EnterState(IngredientStateManager ingredient)
     {
+        ingredient.cookedObj.SetActive(true);
+        ingredient.ingredientObj.SetActive(false);
         ingredient.ingredient.ingredientSO = ingredient.cookedSO;
         Debug.Log("cooked state");
 
-        ingredient.img.fillAmount = 0;
-        ingredient.img.color = Color.red;
+        ingredient.progressBarImg.fillAmount = 0;
+        ingredient.progressBarImg.color = Color.red;
        
         ingredient.progress = 0;
     }
@@ -78,7 +80,7 @@ public class IngredientCookedState : IngredientBaseState
                 }
 
 
-                ingredient.img.fillAmount = ingredient.progress;
+                ingredient.progressBarImg.fillAmount = ingredient.progress;
 
                 if (ingredient.progress >= 1)
                 {
@@ -102,7 +104,7 @@ public class IngredientCookedState : IngredientBaseState
 
         ingredient.cookSound.Play();
         ingredient.cookSmoke.SetActive(true);
-        ingredient.progressBarUI.SetActive(true);
+        ingredient.progressBarPrefab.SetActive(true);
     }
 
     public void IsNotCookingEvents(IngredientStateManager ingredient)
@@ -110,7 +112,7 @@ public class IngredientCookedState : IngredientBaseState
 
         ingredient.cookSound.Stop();
         ingredient.cookSmoke.SetActive(false);
-        ingredient.progressBarUI.SetActive(false);
+        ingredient.progressBarPrefab.SetActive(false);
     }
 
 

@@ -13,10 +13,12 @@ public class SaltShaker : MonoBehaviour
     private GenerateReticle generateReticle;
     public string parentTag;
     public string ingredientTag;
+    UIDisplayIngredientInfo info;
     // Start is called before the first frame update
     void Start()
     {
         generateReticle = GetComponent<GenerateReticle>();
+        info = GetComponent<UIDisplayIngredientInfo>();
     }
 
     // Update is called once per frame
@@ -27,24 +29,25 @@ public class SaltShaker : MonoBehaviour
 
     public void SaltShakerEvent()
     {
-        shakeSound.Play();
 
+        shakeSound.Play();
         // Instantiate the ketchup GameObject at the hit point of the raycast
         if (Physics.Raycast(origin.position, Vector3.down, out RaycastHit hit, 2.0f, layerMask) && generateReticle.isPouring)
         {
             if (hit.collider.gameObject.CompareTag(ingredientTag))
             {
-                Transform rawBurgerPatty = hit.collider.transform;
+                Transform ingredientObj = hit.collider.transform;
 
                 // Check children of the RawBurgerPatty object for the Ingredient/Salt tag
-                foreach (Transform child in rawBurgerPatty)
+                foreach (Transform child in ingredientObj)
                 {
                     if (child.CompareTag(parentTag))
                     {
                         GameObject saltObject = Instantiate(saltPrefab, child.transform.position, Quaternion.identity);
                         saltObject.transform.SetParent(child.transform); // Make the saltObject a child of 'child'
-                        
-                       
+                        info.UpdateInfo();
+
+
                     }
                 }
             }

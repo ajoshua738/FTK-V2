@@ -7,6 +7,7 @@ public class IngredientBurntState : IngredientBaseState
     float timer = 0;
     public override void EnterState(IngredientStateManager ingredient)
     {
+        ingredient.cookedObj.SetActive(false);
         ingredient.isCooking = false;
         ingredient.ingredient.ingredientSO = ingredient.burntSO;
         Debug.Log("burnt state");
@@ -14,9 +15,10 @@ public class IngredientBurntState : IngredientBaseState
         ingredient.burnSound.Play();
         ingredient.cookSmoke.SetActive(false);
         ingredient.burnSmoke.SetActive(true);
-        ingredient.progressBarUI.SetActive(false);
+     
         ingredient.burntObj.SetActive(true);
-        ingredient.ingredientObj.SetActive(false);
+        Object.Destroy(ingredient.progressBarPrefab);
+      
 
     }
 

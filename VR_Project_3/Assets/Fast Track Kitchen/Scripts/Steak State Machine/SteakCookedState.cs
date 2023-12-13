@@ -8,9 +8,9 @@ public class SteakCookedState : SteakBaseState
     {
         Debug.Log("Entereed cooked state");
         steak.ingredient.ingredientSO = steak.cookedSO;
-        steak.img.fillAmount = 0;
+        steak.progressBarImg.fillAmount = 0;
         steak.progress = 0;
-        steak.img.color = Color.red;
+        steak.progressBarImg.color = Color.red;
 
     }
 
@@ -43,6 +43,14 @@ public class SteakCookedState : SteakBaseState
 
     public override void UpdateState(SteakStateManager steak)
     {
+
+
+        //if (steak.progressBarInstance != null && steak.objectToFollow != null)
+        //{
+        //    // Update the progress bar's position to follow the object
+        //    steak.progressBarInstance.transform.position = steak.objectToFollow.position + Vector3.up * steak.yOffset;
+        //}
+
         if (steak.isOnOven && steak.oven.activateCooking)
         {
             steak.timer += Time.deltaTime;
@@ -70,7 +78,7 @@ public class SteakCookedState : SteakBaseState
                 }
 
 
-                steak.img.fillAmount = steak.progress;
+                steak.progressBarImg.fillAmount = steak.progress;
 
                 if (steak.progress >= 1)
                 {
@@ -93,7 +101,7 @@ public class SteakCookedState : SteakBaseState
 
         steak.cookSound.Play();
         steak.cookSmoke.SetActive(true);
-        steak.progressBarUI.SetActive(true);
+        steak.progressBarPrefab.SetActive(true);
     }
 
     public void IsNotCookingEvents(SteakStateManager steak)
@@ -101,7 +109,7 @@ public class SteakCookedState : SteakBaseState
 
         steak.cookSound.Stop();
         steak.cookSmoke.SetActive(false);
-        steak.progressBarUI.SetActive(false);
+        steak.progressBarPrefab.SetActive(false);
     }
 
 }

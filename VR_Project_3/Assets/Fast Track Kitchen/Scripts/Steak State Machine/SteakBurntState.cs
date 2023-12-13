@@ -13,11 +13,14 @@ public class SteakBurntState : SteakBaseState
         steak.ingredient.ingredientSO = steak.burntSO;
         steak.cookSound.Stop();
         steak.burnSound.Play();
-        steak.cookSmoke.SetActive(false);
+      
         steak.burnSmoke.SetActive(true);
-        steak.progressBarUI.SetActive(false);
+      
         steak.burntObj.SetActive(true);
         steak.cookedObj.SetActive(false);
+        Object.Destroy(steak.progressBarPrefab);
+        Object.Destroy(steak.cookSmoke);
+        steak.kitchenToolUI.ChangeIngredientName(steak.halfCookedSO.ingredientName, steak.burntSO.ingredientName);
     }
 
     public override void OnCollisionEnter(SteakStateManager steak, Collision collision)
@@ -42,11 +45,13 @@ public class SteakBurntState : SteakBaseState
 
     public override void UpdateState(SteakStateManager steak)
     {
+       
+
         timer += Time.deltaTime;
 
         if (timer > 5)
         {
-            steak.burnSmoke.SetActive(false);
+            Object.Destroy(steak.burnSmoke);
         }
     }
 }

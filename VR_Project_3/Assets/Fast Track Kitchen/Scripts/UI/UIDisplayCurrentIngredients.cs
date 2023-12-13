@@ -3,149 +3,115 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 public class UIDisplayCurrentIngredients : MonoBehaviour
 {
+    public List<IngredientSO> ingredientsOnPlate = new List<IngredientSO>();
 
 
-    public List<IngredientSO> ingredients;
-   
-    public Dictionary<string, float> ingredientAmounts;
 
-
+    public GameObject UIContainer; 
+    public List<GameObject> UIObjects = new List<GameObject>();
     public Transform startingPoint; // Reference to the starting point of first text prefab
     public GameObject textPrefab; // Reference to your TextMeshProUGUI Prefab
-    public float textSpacing = 0.6f; // Adjust the spacing between UI text elements
-    public float UISpacing = 0.1f; // Adjust the value to adjust the entire container
+    float textSpacing = 0.8f; // Adjust the spacing between UI text elements
+    float UISpacing = 0.1f; // Adjust the value to adjust the entire container
+    float containerYPos;
 
 
-    public float maxDistance = 5f; // Maximum distance to show the UI
-    public float maxViewAngle = 60f; // Maximum view angle to show the UI
- 
-    public GameObject UIContainer; // The kitchen tool that holds the UI
-    public Transform playerTransform;
-    public List<GameObject> UIObjects;
+    public float yOffset = 0.1f;
+    public Transform objectToFollow;
 
-    private float distanceToPlayer;
-    private float angleToPlayer;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = playerObject.transform;
+        objectToFollow = transform;
+        containerYPos = UIContainer.transform.localPosition.y;
+     
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-
-
-
-        if (ingredients.Count <= 0)
+        if (UIContainer != null && objectToFollow != null)
         {
-            UIContainer.SetActive(false);
-        }
-        else
-        {
-            if (distanceToPlayer <= maxDistance)
-            {
-                // Check if the plate is within the view angle
-                Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-                angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-                if (angleToPlayer <= maxViewAngle)
-                {
-                    UIContainer.SetActive(true);
-                    return;
-                }
-
-            }
-            else
-            {
-                UIContainer.SetActive(false);
-            }
-        }
-
-        if (ingredients.Count <= 0)
-        {
-            UIContainer.SetActive(false);
-        }
-        else
-        {
-            UIContainer.SetActive(true);
-        }
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
-        {
-            Ingredient ingredient = collision.gameObject.GetComponent<Ingredient>();
-            IngredientSO ingredientSO = ingredient.GetIngredientSO();
-            ingredients.Add(ingredientSO);
-
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
-        {
-            Ingredient ingredient = collision.gameObject.GetComponent<Ingredient>();
-            IngredientSO ingredientSO = ingredient.GetIngredientSO();
-            ingredients.Add(ingredientSO);
-
+            // Update the progress bar's position to follow the object
+            UIContainer.transform.position = objectToFollow.position + Vector3.up * yOffset;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-     
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
+        Ingredient ingredient = other.GetComponent<Ingredient>();
+
+        if (ingredient != null && other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
-            Ingredient ingredient = other.GetComponent<Ingredient>();
-            IngredientSO ingredientSO = ingredient.GetIngredientSO();
-            ingredients.Add(ingredientSO);
-          
+            IngredientSO currentIngredientSO = ingredient.GetIngredientSO();
+
+            // Check if the ingredient is already on the plate
+            IngredientSO existingIngredient = ingredientsOnPlate.Find(x => x.ingredientName == currentIngredientSO.ingredientName);
+
+            if (existingIngredient != null)
+            {
+                // Update the amount of the existing ingredient
+                existingIngredient.ingredientAmount += currentIngredientSO.ingredientAmount;
+            }
+            else
+            {
+                // Create a new instance of the IngredientSO and add it to the list
+                IngredientSO newIngredient = ScriptableObject.CreateInstance<IngredientSO>();
+                newIngredient.ingredientName = currentIngredientSO.ingredientName;
+                newIngredient.ingredientAmount = currentIngredientSO.ingredientAmount;
+                newIngredient.unit = currentIngredientSO.unit;
+
+                ingredientsOnPlate.Add(newIngredient);
+            }
+
+
+            UpdateUI();
+
+        
         }
     }
-  
+
+
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
+        Ingredient ingredient = other.GetComponent<Ingredient>();
+
+        if (ingredient != null && other.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
-            Ingredient ingredient = other.GetComponent<Ingredient>();
-            IngredientSO ingredientSO = ingredient.GetIngredientSO();
-            // Create a unique key for each ingredient including the unit
-            string ingredientKey = ingredientSO.ingredientName;
+            IngredientSO currentIngredientSO = ingredient.GetIngredientSO();
 
-            // Check for the existence of the ingredient in the list based on the key
-            IngredientSO ingredientToRemove = ingredients.Find(x => (x.ingredientName) == ingredientKey);
+            // Check if the ingredient is on the plate
+            IngredientSO existingIngredient = ingredientsOnPlate.Find(x => x.ingredientName == currentIngredientSO.ingredientName);
 
-            // Remove the ingredient from the list
-            if (ingredientToRemove != null)
+            if (existingIngredient != null)
             {
-                ingredients.Remove(ingredientToRemove);
+                // Reduce the amount or remove completely if the amount is zero
+                existingIngredient.ingredientAmount -= currentIngredientSO.ingredientAmount;
+
+                if (existingIngredient.ingredientAmount <= 0f)
+                {
+                    ingredientsOnPlate.Remove(existingIngredient);
+                }
             }
-          
-            
+            UpdateUI();
         }
     }
-    
-    public void updateUI()
+
+
+    public void UpdateUI()
     {
-        foreach(GameObject go in UIObjects)
+
+        foreach (GameObject go in UIObjects)
         {
             Destroy(go);
         }
         UIObjects.Clear();
         int index = 0;
-        foreach (var ing in ingredients)
+        foreach (var ing in ingredientsOnPlate)
         {
-         
+
             GameObject newText = Instantiate(textPrefab, Vector3.zero, Quaternion.identity, startingPoint);
             newText.transform.localRotation = Quaternion.identity; // Set rotation to zero
             UIObjects.Add(newText);
@@ -158,62 +124,33 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             unitText.text = ing.unit;
 
             newText.transform.localPosition = new Vector3(0f, -index * textSpacing, 0f);
-            UIContainer.transform.localPosition = new Vector3(0f, index * UISpacing, 0f);
+            UIContainer.transform.localPosition = new Vector3(0f, containerYPos + (index * UISpacing), 0f);
             index++;
-            
+
+        }
+        if(UIObjects.Count <= 0)
+        {
+            UIContainer.SetActive(false);
+        }
+        else
+        {
+            UIContainer.SetActive(true);
         }
     }
 
-    // Function to aggregate the amounts of the same ingredients
-    public void AggregateIngredients()
+    public void ChangeIngredientName(string oldName, string newName)
     {
-        ingredientAmounts = new Dictionary<string, float>();
+        IngredientSO ingredientToChange = ingredientsOnPlate.Find(x => x.ingredientName == oldName);
 
-        // Loop through the ingredients list
-        // Loop through the ingredients list
-        for (int i = 0; i < ingredients.Count; i++)
+        if (ingredientToChange != null)
         {
-            string currentIngredientName = ingredients[i].ingredientName;
-            float currentIngredientAmount = ingredients[i].ingredientAmount;
-            string currentIngredientUnit = ingredients[i].unit; // Retrieve the unit
-
-            // Create a unique key for each ingredient including the unit
-            string ingredientKey = currentIngredientName + "_" + currentIngredientUnit;
-
-            // Check if the ingredient name exists in the dictionary
-            if (ingredientAmounts.ContainsKey(ingredientKey))
-            {
-                // Add the amount to the existing ingredient in the dictionary
-                ingredientAmounts[ingredientKey] += currentIngredientAmount;
-            }
-            else
-            {
-                // Add the ingredient to the dictionary
-                ingredientAmounts.Add(ingredientKey, currentIngredientAmount);
-            }
+            ingredientToChange.ingredientName = newName;
+            UpdateUI(); // Update the UI after changing the name
         }
-
-        // Clear the original ingredients list
-        ingredients.Clear();
-
-        // Rebuild the ingredients list with aggregated amounts
-        foreach (var kvp in ingredientAmounts)
+        else
         {
-            string[] keyParts = kvp.Key.Split('_');
-            string ingredientName = keyParts[0];
-            string ingredientUnit = keyParts[1];
-
-            // Create a new instance of IngredientSO using CreateInstance
-            IngredientSO aggregatedIngredient = ScriptableObject.CreateInstance<IngredientSO>();
-            aggregatedIngredient.name = ingredientName;
-            aggregatedIngredient.ingredientName = ingredientName;
-            aggregatedIngredient.ingredientAmount = kvp.Value;
-            aggregatedIngredient.unit = ingredientUnit; // Set the unit
-
-            ingredients.Add(aggregatedIngredient);
+            Debug.LogWarning("Ingredient '" + oldName + "' not found.");
         }
-
-        updateUI();
-      
     }
+
 }

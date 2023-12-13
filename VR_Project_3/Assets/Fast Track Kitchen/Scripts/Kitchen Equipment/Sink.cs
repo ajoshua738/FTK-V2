@@ -36,7 +36,7 @@ public class Sink : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Kitchen Tool"))
         {
-            if (other.gameObject.CompareTag("KitchenTool/Pot"))
+            if (other.gameObject.name == "Pot Base")
             {
                 hasCorrectKitchenTool = true;
                 addWater = other.gameObject.GetComponent<AddWater>();

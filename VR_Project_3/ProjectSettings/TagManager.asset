@@ -23,7 +23,6 @@ TagManager:
   - Name Text
   - Amount Text
   - Dial
-  - KitchenEquipment/Stove
   - Ingredient/Egg
   - Ingredient/Oil
   - Ingredient/FriedEgg
@@ -31,6 +30,12 @@ TagManager:
   - Ingredient/Sausage
   - KitchenTool/Tray
   - KitchenEquipment/Oven
+  - KitchenEquipment/RightStove
+  - KitchenEquipment/LeftStove
+  - Ingredient/Steak
+  - Ingredient/Potato
+  - ProgressBar
+  - KitchenToolUI
   layers:
   - Default
   - TransparentFX

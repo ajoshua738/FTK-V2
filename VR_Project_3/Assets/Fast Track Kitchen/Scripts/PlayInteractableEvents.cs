@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -45,9 +46,18 @@ public class PlayInteractableEvents : MonoBehaviour
 
     void Start()
     {
-        defaultColor = rend.material.color;
-        defaultScale = obj.localScale;
-        hoverScale = defaultScale * scaleMultiplier;
+        if(rend != null)
+        {
+            defaultColor = rend.material.color;
+        }
+
+        if(obj != null)
+        {
+            defaultScale = obj.localScale;
+            hoverScale = defaultScale * scaleMultiplier;
+        }
+      
+      
 
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
        
@@ -84,7 +94,7 @@ public class PlayInteractableEvents : MonoBehaviour
 
     private void Update()
     {
-
+        
         if (scaleTransitionTime < transitionDuration)
         {
             scaleTransitionTime += Time.deltaTime;
@@ -92,7 +102,6 @@ public class PlayInteractableEvents : MonoBehaviour
             float t = Mathf.Clamp01(scaleTransitionTime / transitionDuration);
             obj.localScale = Vector3.Lerp(currentScale, desiredScale, t);
         }
-
 
         if (colorTransitionTime < transitionDuration)
         {
@@ -109,6 +118,7 @@ public class PlayInteractableEvents : MonoBehaviour
                 desiredColor = defaultColor;
             }
         }
+
     }
 
     void SetMaterial(Transform interactorTransform, Color targetColor)

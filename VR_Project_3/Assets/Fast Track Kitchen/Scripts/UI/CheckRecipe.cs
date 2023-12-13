@@ -21,6 +21,7 @@ public class CheckRecipe : MonoBehaviour
     public RecipeSO newRecipeSO;
     public Dictionary<string, float> ingredientAmounts;
     public PerformanceTracker performanceTracker;
+    public TableBell tableBell;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,16 +30,12 @@ public class CheckRecipe : MonoBehaviour
         newRecipeSO = Instantiate(originalRecipeSO);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void CheckFinalRecipe()
     {
-        if (newRecipeSO != null)
+
+        if (newRecipeSO != null && ingredients.Count != 0)
         {
             List<IngredientSO> recipeIngredients = newRecipeSO.ingredientsSOList;
 
@@ -73,17 +70,19 @@ public class CheckRecipe : MonoBehaviour
                 else
                 {
                     Debug.Log("Ingredient not found: " + recipeIngredient.ingredientName);
+                    remarksText.text += "Ingredient not found: " + recipeIngredient.ingredientName+"\n\n";
                     performanceTracker.score -= 5;
                 }
             }
+            performanceTracker.checkScore();
+            EnableDisplayPerformance();
         }
         else
         {
-            Debug.LogError("RecipeSO is not assigned!");
+            Debug.Log("RecipeSO is not assigned!");
         }
 
-        performanceTracker.checkScore();
-        EnableDisplayPerformance();
+    
 
     }
 
@@ -100,6 +99,12 @@ public class CheckRecipe : MonoBehaviour
             Ingredient ingredient = other.GetComponent<Ingredient>();
             IngredientSO ingredientSO = ingredient.GetIngredientSO();
             ingredients.Add(ingredientSO);
+
+            if(ingredients.Count > 0)
+            {
+                tableBell.canBeCalled = true;
+                tableBell.glowObj.SetActive(true);
+            }
         }
     }
 
@@ -110,6 +115,11 @@ public class CheckRecipe : MonoBehaviour
             Ingredient ingredient = other.GetComponent<Ingredient>();
             IngredientSO ingredientSO = ingredient.GetIngredientSO();
             ingredients.Remove(ingredientSO);
+            if (ingredients.Count <= 0)
+            {
+                tableBell.canBeCalled = false;
+                tableBell.glowObj.SetActive(false);
+            }
         }
     }
 

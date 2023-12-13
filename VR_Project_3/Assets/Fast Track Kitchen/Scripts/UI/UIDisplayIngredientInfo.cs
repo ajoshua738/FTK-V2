@@ -6,32 +6,42 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIDisplayIngredientInfo : MonoBehaviour
 {
-    public GameObject textPrefab;
-    public GameObject UIContainer;
+
     private float amount;
     public bool canBeUpdated;
     public bool isSockted = false;
     int count = 0;
 
+    public GameObject ingredientInfoPrefab;
+    public float yOffset = 0.1f; // Adjust this value to set the height above the object
+    Transform objectToFollow;
   
+    public Transform textPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        UIContainer.SetActive(false);
+   
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
         grabInteractable.selectEntered.AddListener(x => ShowInfo());
         grabInteractable.selectExited.AddListener(x => HideInfo());
-        grabInteractable.activated.AddListener(x => UpdateInfo());
+        //grabInteractable.activated.AddListener(x => UpdateInfo());
     
        
         amount = GetComponent<Ingredient>().ingredientSO.ingredientAmount;
-      
+
+        
+        objectToFollow = transform;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ingredientInfoPrefab != null && objectToFollow != null)
+        {
+            // Update the progress bar's position to follow the object
+            ingredientInfoPrefab.transform.position = objectToFollow.position + Vector3.up * yOffset;
+        }
     }
 
     public void ShowInfo()
@@ -39,15 +49,15 @@ public class UIDisplayIngredientInfo : MonoBehaviour
      
         if (!isSockted)
         {
-            UIContainer.SetActive(true);
+            ingredientInfoPrefab.SetActive(true);
         }
        
     }
 
     public void HideInfo()
     {
-       
-        UIContainer.SetActive(false);
+
+        ingredientInfoPrefab.SetActive(false);
         if (canBeUpdated)
         {
             ResetAmount();

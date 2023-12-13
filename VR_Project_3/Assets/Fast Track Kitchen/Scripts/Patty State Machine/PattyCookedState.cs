@@ -10,8 +10,8 @@ public class PattyCookedState : PattyBaseState
         patty.ingredient.ingredientSO = patty.cookedPattySO;
         Debug.Log("cooked state");
 
-        patty.img.fillAmount = 0;
-        patty.img.color = Color.red;
+        patty.progressBarImg.fillAmount = 0;
+        patty.progressBarImg.color = Color.red;
         //patty.cookTimer = 0;
         
         //patty.increment = 0;
@@ -44,7 +44,7 @@ public class PattyCookedState : PattyBaseState
 
         patty.grillSound.Play();
         patty.cookSmoke.SetActive(true);
-        patty.progressBarUI.SetActive(true);
+        patty.progressBarInstance.SetActive(true);
     }
 
     public void IsNotCookingEvents(PattyStateManager patty)
@@ -52,7 +52,7 @@ public class PattyCookedState : PattyBaseState
 
         patty.grillSound.Stop();
         patty.cookSmoke.SetActive(false);
-        patty.progressBarUI.SetActive(false);
+        patty.progressBarInstance.SetActive(false);
     }
 
 
@@ -88,7 +88,7 @@ public class PattyCookedState : PattyBaseState
                 }
 
               
-                patty.img.fillAmount = patty.progress;
+                patty.progressBarImg.fillAmount = patty.progress;
 
                 if (patty.progress >= 1)
                 {

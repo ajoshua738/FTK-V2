@@ -21,8 +21,7 @@ public class PattyStateManager : MonoBehaviour
     public GameObject burnSmoke;
 
 
-    public GameObject progressBarUI;
-    public Image img;
+
 
 
 
@@ -51,12 +50,19 @@ public class PattyStateManager : MonoBehaviour
 
 
     public Griddle griddle = null;
-    
+
+
+    public GameObject progressBarPrefab;
+    public float yOffset = 0.1f; // Adjust this value to set the height above the object
+    public Transform objectToFollow;
+    public GameObject progressBarInstance;
+    public Image progressBarImg;
+
     // Start is called before the first frame update
     void Start()
     {
         
-        progressBarUI.SetActive(false);
+       
         cookSmoke.SetActive(false);
         burnSmoke.SetActive(false);
         //burger material stuff
@@ -70,7 +76,18 @@ public class PattyStateManager : MonoBehaviour
 
         ingredient = GetComponent<Ingredient>();
 
-        
+        progressBarInstance = Instantiate(progressBarPrefab, transform.position + Vector3.up * yOffset, Quaternion.identity);
+        objectToFollow = transform;
+
+        foreach (Transform child in progressBarInstance.transform)
+        {
+            if (child.CompareTag("ProgressBar"))
+            {
+                progressBarImg = child.gameObject.GetComponent<Image>();
+            }
+        }
+        progressBarInstance.SetActive(false);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,7 +105,11 @@ public class PattyStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
         //Debug.Log(currentState);
-        
+        if (progressBarInstance != null && objectToFollow != null)
+        {
+            // Update the progress bar's position to follow the object
+            progressBarInstance.transform.position = objectToFollow.position + Vector3.up * yOffset;
+        }
     }
 
     public void SwitchState(PattyBaseState state)

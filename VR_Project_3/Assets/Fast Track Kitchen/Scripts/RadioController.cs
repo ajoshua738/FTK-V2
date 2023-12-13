@@ -11,14 +11,19 @@ public class RadioController : MonoBehaviour
     public TMP_Text songName;
     public GameObject songContainer;
     public bool isOn = false;
+    public bool isPaused = false;
     public GameObject onText;
     public GameObject offText;
+    public GameObject loopOnText;
+    public GameObject loopOffText;
     // Start is called before the first frame update
     void Start()
     {
         songContainer.SetActive(isOn);
         onText.SetActive(!isOn);
         offText.SetActive(isOn);
+        loopOnText.SetActive(true);
+        loopOffText.SetActive(false);
     }
 
     public void Play()
@@ -50,7 +55,7 @@ public class RadioController : MonoBehaviour
     private void Update()
     {
 
-        if (!audioSource.isPlaying && isOn)
+        if (!audioSource.isPlaying && isOn && !isPaused)
         {
             timer += Time.deltaTime;
             if (timer > 5)
@@ -68,10 +73,12 @@ public class RadioController : MonoBehaviour
         if (audioSource != null && audioSource.isPlaying)
         {
             audioSource.Pause();
+            isPaused = true;
         }
         else if(audioSource != null && !audioSource.isPlaying)
         {
             audioSource.Play();
+            isPaused = false;
         }
     }
 
@@ -107,4 +114,19 @@ public class RadioController : MonoBehaviour
         songName.text = audioSource.clip.name;
     }
 
+    public void LoopSetting()
+    {
+        if(audioSource.loop)
+        {
+            audioSource.loop = false;
+            loopOffText.SetActive(false);
+            loopOnText.SetActive(true);
+        }
+        else
+        {
+            audioSource.loop = true;
+            loopOffText.SetActive(true);
+            loopOnText.SetActive(false);
+        }
+    }
 }

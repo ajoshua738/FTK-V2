@@ -10,12 +10,13 @@ public class SteakHalfCookedState : SteakBaseState
     public override void EnterState(SteakStateManager steak)
     {
         Debug.Log("Entereed half cooked state");
-        steak.ingredient.ingredientSO = steak.halfCooekdSO;
-        steak.img.fillAmount = 0;
+        steak.ingredient.ingredientSO = steak.halfCookedSO;
+        steak.progressBarImg.fillAmount = 0;
         steak.progress = 0;
         steak.rawObj.SetActive(false);
         steak.cookedObj.SetActive(true);
-        steak.hasCalledIsCookingEvent = true;
+        steak.hasCalledIsCookingEvent = false;
+        steak.kitchenToolUI.ChangeIngredientName(steak.rawSO.ingredientName, steak.halfCookedSO.ingredientName);
       
       
     }
@@ -57,48 +58,18 @@ public class SteakHalfCookedState : SteakBaseState
 
     public override void UpdateState(SteakStateManager steak)
     {
-        // Logic for the Stove
-        //if (steak.isOnStove && steak.stove != null)
-        //{
-        //    if (steak.stove.isOn && steak.stove.hasCorrectKitchenTool)
-        //    {
-             
-        //        ProcessCooking(steak, steak.stove.temp, Color.red);
-        //    }
-        //    else
-        //    {
-        //        hasCalledIsCookingEvent = true;
-        //        IsNotCookingEvents(steak);
-        //    }
-        //}
-       
 
-
-        //// Logic for the Oven
-        //if (steak.isOnOven && steak.oven != null)
+        //if (steak.progressBarInstance != null && steak.objectToFollow != null)
         //{
-        //    if (steak.oven.isOn && steak.oven.hasCorrectKitchenTool)
-        //    {
-        //        if (!hasReset)
-        //        {
-        //            steak.progress = 0;
-        //            steak.timer = 0;
-        //            hasReset = true;
-        //        }
-        //        ProcessCooking(steak, steak.oven.temp, Color.green);
-        //    }
-        //    else
-        //    {
-        //        hasCalledIsCookingEvent = true;
-        //        IsNotCookingEvents(steak);
-        //    }
+        //    // Update the progress bar's position to follow the object
+        //    steak.progressBarInstance.transform.position = steak.objectToFollow.position + Vector3.up * steak.yOffset;
         //}
 
-        if(steak.isOnStove)
+        if (steak.isOnStove)
         {
             if (steak.stove.isOn && steak.stove.hasCorrectKitchenTool)
             {
-                steak.img.color = Color.red;
+                steak.progressBarImg.color = Color.red;
                 steak.timer += Time.deltaTime;
                 if (!steak.hasCalledIsCookingEvent)
                 {
@@ -124,7 +95,7 @@ public class SteakHalfCookedState : SteakBaseState
                     }
 
 
-                    steak.img.fillAmount = steak.progress;
+                    steak.progressBarImg.fillAmount = steak.progress;
 
                     if (steak.progress >= 1)
                     {
@@ -136,115 +107,101 @@ public class SteakHalfCookedState : SteakBaseState
 
 
             }
-          
+            
+
+
         }
 
-        if(steak.isOnOven && steak.oven.activateCooking)
+        if(steak.isOnOven)
         {
-            if(!reset)
+            if (steak.oven != null && steak.oven.activateCooking)
             {
-                steak.img.fillAmount = 0;
-                steak.progress = 0;
-                reset = true;
+                if (!reset)
+                {
+                    steak.progressBarImg.fillAmount = 0;
+                    steak.progress = 0;
+                    reset = true;
+                }
+                steak.progressBarImg.color = Color.green;
+                steak.timer += Time.deltaTime;
+                if (!steak.hasCalledIsCookingEvent)
+                {
+                    steak.hasCalledIsCookingEvent = true;
+                    IsCookingEvents(steak);
+                }
+
+                if (steak.timer > 1)
+                {
+                    if (steak.oven.temp == 0)
+                    {
+                        steak.progress += steak.lowTempProgress;
+
+                    }
+                    else if (steak.oven.temp == 1)
+                    {
+                        steak.progress += steak.mediumTempProgress;
+
+                    }
+                    else
+                    {
+                        steak.progress += steak.highTempProgress;
+                    }
+
+
+                    steak.progressBarImg.fillAmount = steak.progress;
+
+                    if (steak.progress >= 1)
+                    {
+                        steak.progress = 1;
+                        steak.SwitchState(steak.cookedState);
+                    }
+                    steak.timer = 0;
+                }
+
+
             }
-            steak.img.color = Color.green;
-            steak.timer += Time.deltaTime;
-            if (!steak.hasCalledIsCookingEvent)
-            {
-                steak.hasCalledIsCookingEvent = true;
-                IsCookingEvents(steak);
-            }
-
-            if (steak.timer > 1)
-            {
-                if (steak.oven.temp == 0)
-                {
-                    steak.progress += steak.lowTempProgress;
-
-                }
-                else if (steak.oven.temp == 1)
-                {
-                    steak.progress += steak.mediumTempProgress;
-
-                }
-                else
-                {
-                    steak.progress += steak.highTempProgress;
-                }
-
-
-                steak.img.fillAmount = steak.progress;
-
-                if (steak.progress >= 1)
-                {
-                    steak.progress = 1;
-                    steak.SwitchState(steak.cookedState);
-                }
-                steak.timer = 0;
-            }
-
+           
 
         }
 
-
-        if(!steak.isOnStove && !steak.isOnOven)
+        if (steak.isOnStove)
+        {
+            if (!steak.stove.isOn || !steak.stove.hasCorrectKitchenTool)
+            {
+                steak.hasCalledIsCookingEvent = false;
+                IsNotCookingEvents(steak);
+            }
+        }
+        else if (steak.isOnOven && steak.oven != null)
+        {
+            if(!steak.oven.activateCooking)
+            {
+                steak.hasCalledIsCookingEvent = false;
+                IsNotCookingEvents(steak);
+            }
+         
+        }
+        else
         {
             steak.hasCalledIsCookingEvent = false;
             IsNotCookingEvents(steak);
         }
+       
+      
       
 
 
 
     }
 
-    public void ProcessCooking(SteakStateManager steak, int temperature, Color indicatorColor)
-    {
-        steak.timer += Time.deltaTime;
-        if (!steak.hasCalledIsCookingEvent)
-        {
-            steak.hasCalledIsCookingEvent = true;
-            IsCookingEvents(steak);
-        }
-
-        if (steak.timer > 1)
-        {
-            steak.img.color = indicatorColor;
-
-            
-            switch (temperature)
-            {
-                case 0: // Low temperature
-                    steak.progress += steak.lowTempProgress;
-                    break;
-                case 1: // Medium temperature
-                    steak.progress += steak.mediumTempProgress;
-                    break;
-                case 2: // High temperature
-                    steak.progress += steak.highTempProgress;
-                    break;
-                default:
-                    break;
-            }
-
-          
-            steak.img.fillAmount = steak.progress;
-
-            if (steak.progress >= 1)
-            {
-                steak.progress = 1;
-                steak.SwitchState(steak.cookedState);
-            }
-            steak.timer = 0;
-        }
-    }
+   
 
     public void IsCookingEvents(SteakStateManager steak)
     {
    
         steak.cookSound.Play();
         steak.cookSmoke.SetActive(true);
-        steak.progressBarUI.SetActive(true);
+        steak.progressBarPrefab.SetActive(true);
     }
 
     public void IsNotCookingEvents(SteakStateManager steak)
@@ -252,7 +209,7 @@ public class SteakHalfCookedState : SteakBaseState
 
         steak.cookSound.Stop();
         steak.cookSmoke.SetActive(false);
-        steak.progressBarUI.SetActive(false);
+        steak.progressBarPrefab.SetActive(false);
     }
 
     public void IsBurning(SteakStateManager steak)

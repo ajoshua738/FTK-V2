@@ -26,7 +26,7 @@ public class SocketDisableInfo : MonoBehaviour
         UIDisplayIngredientInfo a =  args.interactableObject.transform.GetComponent<UIDisplayIngredientInfo>();
         if(a != null )
         {
-            a.UIContainer.SetActive(false);
+            a.ingredientInfoPrefab.SetActive(false);
             a.isSockted = true;
         }
   

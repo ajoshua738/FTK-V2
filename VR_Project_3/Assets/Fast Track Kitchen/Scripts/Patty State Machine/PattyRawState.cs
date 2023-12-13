@@ -47,7 +47,7 @@ public class PattyRawState : PattyBaseState
                 }
 
                 patty.pattyMat.SetFloat("_Blend", patty.progress);
-                patty.img.fillAmount = patty.progress;
+                patty.progressBarImg.fillAmount = patty.progress;
 
                 if (patty.progress >= 1)
                 {
@@ -82,7 +82,7 @@ public class PattyRawState : PattyBaseState
        
         patty.grillSound.Play();
         patty.cookSmoke.SetActive(true);
-        patty.progressBarUI.SetActive(true);
+        patty.progressBarInstance.SetActive(true);
     }
 
     public void IsNotCookingEvents(PattyStateManager patty)
@@ -90,7 +90,7 @@ public class PattyRawState : PattyBaseState
         
         patty.grillSound.Stop();
         patty.cookSmoke.SetActive(false);
-        patty.progressBarUI.SetActive(false);
+        patty.progressBarInstance.SetActive(false);
     }
     public override void OnCollisionExit(PattyStateManager patty, Collision collision)
     {

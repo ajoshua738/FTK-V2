@@ -27,6 +27,8 @@ public class SteakRawState : SteakBaseState
             steak.stove = other.GetComponent<Stove>();
             steak.isOnStove = true;
         }
+
+       
     }
 
     public override void OnTriggerExit(SteakStateManager steak, Collider other)
@@ -35,17 +37,20 @@ public class SteakRawState : SteakBaseState
         {
             steak.isOnStove = false;
         }
+        
     }
 
     public override void UpdateState(SteakStateManager steak)
     {
 
-        if (steak.stove == null)
-        {
-            return;
-        }
 
-        if (steak.isOnStove && steak.stove.isOn && steak.stove.hasCorrectKitchenTool)
+        //if (steak.progressBarInstance != null && steak.objectToFollow != null)
+        //{
+        //    // Update the progress bar's position to follow the object
+        //    steak.progressBarInstance.transform.position = steak.objectToFollow.position + Vector3.up * steak.yOffset;
+        //}
+
+        if (steak.stove != null && steak.isOnStove && steak.stove.isOn && steak.stove.hasCorrectKitchenTool)
         {
             steak.timer += Time.deltaTime;
             if (!hasCalledIsCookingEvent)
@@ -72,7 +77,7 @@ public class SteakRawState : SteakBaseState
                 }
 
 
-                steak.img.fillAmount = steak.progress;
+                steak.progressBarImg.fillAmount = steak.progress;
 
                 if (steak.progress >= 1)
                 {
@@ -96,7 +101,7 @@ public class SteakRawState : SteakBaseState
 
         steak.cookSound.Play();
         steak.cookSmoke.SetActive(true);
-        steak.progressBarUI.SetActive(true);
+        steak.progressBarPrefab.SetActive(true);
     }
 
     public void IsNotCookingEvents(SteakStateManager steak)
@@ -104,6 +109,6 @@ public class SteakRawState : SteakBaseState
 
         steak.cookSound.Stop();
         steak.cookSmoke.SetActive(false);
-        steak.progressBarUI.SetActive(false);
+        steak.progressBarPrefab.SetActive(false);
     }
 }

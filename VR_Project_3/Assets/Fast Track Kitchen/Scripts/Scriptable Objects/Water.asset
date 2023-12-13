@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   ingredientName: Water
-  ingredientAmount: 200
+  ingredientAmount: 285
   unit: ml
