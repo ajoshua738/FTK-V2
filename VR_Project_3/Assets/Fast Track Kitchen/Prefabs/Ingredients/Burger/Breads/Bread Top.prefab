@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 7414443303850854889}
   - component: {fileID: 9180108538959224696}
   - component: {fileID: 4413061221081142019}
-  - component: {fileID: -3299574198333628132}
   - component: {fileID: 4689073643863182995}
   m_Layer: 8
   m_Name: Bread Top
@@ -321,20 +320,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &-3299574198333628132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7789819730287424233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f06466b92947e42bb3805634bfd164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandModel: {fileID: 0}
-  rightHandModel: {fileID: 0}
 --- !u!114 &4689073643863182995
 MonoBehaviour:
   m_ObjectHideFlags: 0

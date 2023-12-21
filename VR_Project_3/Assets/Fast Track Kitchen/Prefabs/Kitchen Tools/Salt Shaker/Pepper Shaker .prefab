@@ -821,7 +821,7 @@ MonoBehaviour:
   scaleMultiplier: 1.1
   changeColorOnActivate: 1
   activateColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-  playAudioOnHover: 1
+  playAudioOnHover: 0
   hoverAudio: {fileID: 2003860938680125881}
   playAudioOnActivate: 0
   activateAudio: {fileID: 0}

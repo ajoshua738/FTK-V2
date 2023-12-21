@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8196663176818454531}
   - component: {fileID: 778138892799504682}
   - component: {fileID: 8538588203762100689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spatula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,12 +314,12 @@ MonoBehaviour:
   changeColorOnHover: 1
   rend: {fileID: 3655360163387411409}
   hoverColor: {r: 0, g: 0.5894128, b: 0.9803922, a: 1}
-  changeScaleOnHover: 1
+  changeScaleOnHover: 0
   obj: {fileID: 2356276190959306160}
   scaleMultiplier: 1.1
   changeColorOnActivate: 1
   activateColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-  playAudioOnHover: 1
+  playAudioOnHover: 0
   hoverAudio: {fileID: 2612850512954636482}
   playAudioOnActivate: 1
   activateAudio: {fileID: 3480146201973595886}

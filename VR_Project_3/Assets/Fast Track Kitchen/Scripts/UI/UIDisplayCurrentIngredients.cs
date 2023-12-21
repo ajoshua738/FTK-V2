@@ -20,7 +20,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
 
     public float yOffset = 0.1f;
     public Transform objectToFollow;
-
+    int index;
     private void Start()
     {
         objectToFollow = transform;
@@ -34,7 +34,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
         if (UIContainer != null && objectToFollow != null)
         {
             // Update the progress bar's position to follow the object
-            UIContainer.transform.position = objectToFollow.position + Vector3.up * yOffset;
+            UIContainer.transform.position = objectToFollow.position + (Vector3.up * yOffset * index);
         }
     }
 
@@ -108,7 +108,7 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             Destroy(go);
         }
         UIObjects.Clear();
-        int index = 0;
+        index = 0;
         foreach (var ing in ingredientsOnPlate)
         {
 
@@ -124,7 +124,8 @@ public class UIDisplayCurrentIngredients : MonoBehaviour
             unitText.text = ing.unit;
 
             newText.transform.localPosition = new Vector3(0f, -index * textSpacing, 0f);
-            UIContainer.transform.localPosition = new Vector3(0f, containerYPos + (index * UISpacing), 0f);
+            
+            //UIContainer.transform.localPosition = new Vector3(0f, (index * UISpacing), 0f);
             index++;
 
         }

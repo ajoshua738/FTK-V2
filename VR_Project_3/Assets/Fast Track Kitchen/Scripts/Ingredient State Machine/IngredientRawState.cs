@@ -23,16 +23,21 @@ public class IngredientRawState : IngredientBaseState
 
     public override void OnTriggerEnter(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove == null)
         {
             ingredient.stove = other.GetComponent<Stove>();
+        }
+        
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove != null)
+        {
+            
             ingredient.isCooking = true;
         }
     }
 
     public override void OnTriggerExit(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove != null)
         {
             ingredient.isCooking = false;
             IsNotCookingEvents(ingredient);
@@ -41,12 +46,9 @@ public class IngredientRawState : IngredientBaseState
 
     public override void UpdateState(IngredientStateManager ingredient)
     {
-        if(ingredient.stove == null)
-        {
-            return;
-        }
+       
 
-        if(ingredient.isCooking && ingredient.stove.isOn && ingredient.stove.hasCorrectKitchenTool)
+        if(ingredient.isCooking && ingredient.stove != null && ingredient.stove.isOn && ingredient.stove.hasCorrectKitchenTool)
         {
             ingredient.timer += Time.deltaTime;
             if (!hasCalledIsCookingEvent)

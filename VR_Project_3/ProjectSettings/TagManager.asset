@@ -36,11 +36,13 @@ TagManager:
   - Ingredient/Potato
   - ProgressBar
   - KitchenToolUI
+  - KitchenEquipment/Stove
+  - Hinge
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Post Processing
@@ -50,8 +52,8 @@ TagManager:
   - Kitchen Tool
   - Item
   - Plate
-  - 
-  - 
+  - IgnoreLight
+  - IgnoreAll
   - 
   - 
   - 

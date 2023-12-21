@@ -694,9 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookSound: {fileID: 36161783210041733}
   burnSound: {fileID: 3930123724807264224}
-  progressBarUI: {fileID: 7041216995957012935}
-  img: {fileID: 7781862208674845122}
   ingredient: {fileID: 0}
+  rawSO: {fileID: 11400000, guid: 934115a134e5a3048ba80afb3ef27e07, type: 2}
   cookedSO: {fileID: 11400000, guid: 29b953e7c205dcc46b8ee9a059afdc67, type: 2}
   burntSO: {fileID: 11400000, guid: e6b2b53078afdca4ba79c975d4eb3d6f, type: 2}
   progress: 0
@@ -708,9 +707,15 @@ MonoBehaviour:
   timer: 0
   cookSmoke: {fileID: 3155102867185765573}
   burnSmoke: {fileID: 7227216038353128615}
-  burntObj: {fileID: 4157280747783105029}
   ingredientObj: {fileID: 3554092187275693485}
-  kitchenEquipmentTag: KitchenEquipment/Stove
+  cookedObj: {fileID: 3554092187275693485}
+  burntObj: {fileID: 4157280747783105029}
+  kitchenEquipmentTag: KitchenEquipment/LeftStove
+  progressBarPrefab: {fileID: 5248578931374119296}
+  yOffset: 0.1
+  objectToFollow: {fileID: 0}
+  progressBarImg: {fileID: 1253437087383704309}
+  kitchenToolUI: {fileID: 0}
 --- !u!1 &6422456150814151689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,21 +1035,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b4b54db13116a4c8a588fcc44aee06, type: 3}
---- !u!224 &2791089143637843831 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6622026804345211388, guid: 82b4b54db13116a4c8a588fcc44aee06,
-    type: 3}
-  m_PrefabInstance: {fileID: 9033616683363145355}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7041216995957012935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2083679055593533260, guid: 82b4b54db13116a4c8a588fcc44aee06,
-    type: 3}
-  m_PrefabInstance: {fileID: 9033616683363145355}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7781862208674845122 stripped
+--- !u!114 &1253437087383704309 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1631254074886113097, guid: 82b4b54db13116a4c8a588fcc44aee06,
+  m_CorrespondingSourceObject: {fileID: 7798194828418303102, guid: 82b4b54db13116a4c8a588fcc44aee06,
     type: 3}
   m_PrefabInstance: {fileID: 9033616683363145355}
   m_PrefabAsset: {fileID: 0}
@@ -1054,3 +1047,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &2791089143637843831 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6622026804345211388, guid: 82b4b54db13116a4c8a588fcc44aee06,
+    type: 3}
+  m_PrefabInstance: {fileID: 9033616683363145355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5248578931374119296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3858292096385437451, guid: 82b4b54db13116a4c8a588fcc44aee06,
+    type: 3}
+  m_PrefabInstance: {fileID: 9033616683363145355}
+  m_PrefabAsset: {fileID: 0}

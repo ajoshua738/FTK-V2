@@ -22,6 +22,7 @@ public class IngredientStateManager : MonoBehaviour
 
 
     public Ingredient ingredient;
+    public IngredientSO rawSO;
     public IngredientSO cookedSO;
     public IngredientSO burntSO;
 
@@ -51,10 +52,15 @@ public class IngredientStateManager : MonoBehaviour
     public Transform objectToFollow;
    //public GameObject progressBarInstance;
     public Image progressBarImg;
+    public UIDisplayCurrentIngredients kitchenToolUI;
     // Start is called before the first frame update
     void Start()
     {
-        cookedObj.SetActive(false);
+        if (ingredientObj != cookedObj)
+        {
+            cookedObj.SetActive(false);
+        }
+       
         burntObj.SetActive(false);
         cookSmoke.SetActive(false);
         burnSmoke.SetActive(false);
@@ -74,6 +80,7 @@ public class IngredientStateManager : MonoBehaviour
         //    }
         //}
         progressBarPrefab.SetActive(false);
+      
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -89,11 +96,19 @@ public class IngredientStateManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentState.OnTriggerEnter(this, other);
+        if (other.gameObject.CompareTag("KitchenToolUI"))
+        {
+            kitchenToolUI = other.GetComponent<UIDisplayCurrentIngredients>();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         currentState.OnTriggerExit(this, other);
+        if (other.gameObject.CompareTag("KitchenToolUI") && kitchenToolUI != null)
+        {
+            kitchenToolUI = null;
+        }
     }
 
     // Update is called once per frame

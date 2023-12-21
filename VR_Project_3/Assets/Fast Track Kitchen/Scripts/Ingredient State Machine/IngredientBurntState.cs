@@ -7,6 +7,8 @@ public class IngredientBurntState : IngredientBaseState
     float timer = 0;
     public override void EnterState(IngredientStateManager ingredient)
     {
+        ingredient.kitchenToolUI.ChangeIngredientName(ingredient.cookedSO.ingredientName, ingredient.burntSO.ingredientName);
+        ingredient.ingredientObj.SetActive(false);
         ingredient.cookedObj.SetActive(false);
         ingredient.isCooking = false;
         ingredient.ingredient.ingredientSO = ingredient.burntSO;
@@ -18,7 +20,7 @@ public class IngredientBurntState : IngredientBaseState
      
         ingredient.burntObj.SetActive(true);
         Object.Destroy(ingredient.progressBarPrefab);
-      
+        ingredient.kitchenToolUI.ChangeIngredientName(ingredient.cookedSO.ingredientName, ingredient.burntSO.ingredientName);
 
     }
 

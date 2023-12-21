@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7668329982960136819}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1549861850277471416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9073554133815895184}
+  m_Layer: 10
+  m_Name: Attach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9073554133815895184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549861850277471416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.52300024, y: 0.0362, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7840488539925928190}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1985789243822620590
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +75,7 @@ GameObject:
   - component: {fileID: 4907844755330400515}
   m_Layer: 0
   m_Name: 'UI  '
-  m_TagString: Untagged
+  m_TagString: KitchenToolUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,8 +114,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.25192297, y: 0.18156195, z: 0.251923}
-  m_Center: {x: 0.0015005469, y: 0.09100175, z: 0.001500547}
+  m_Size: {x: 0.25192297, y: 0.058562994, z: 0.251923}
+  m_Center: {x: 0.0015005469, y: 0.029502273, z: 0.0015005469}
 --- !u!114 &4907844755330400515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +323,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.5, z: 0.7}
+  m_LocalScale: {x: 0.9, y: 0.5, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3615924882625919020}
@@ -560,6 +591,7 @@ Transform:
   - {fileID: 3870270668235984008}
   - {fileID: 7668329982960136819}
   - {fileID: 6259332342204191362}
+  - {fileID: 9073554133815895184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &5651506995374106446
@@ -700,9 +732,9 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 9073554133815895184}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 1
+  m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -769,8 +801,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2823162, y: 0.02674687, z: 0.06740475}
-  m_Center: {x: -0.3114767, y: 0.036851704, z: -0.0010676384}
+  m_Size: {x: 0.34934998, y: 0.02674687, z: 0.06740475}
+  m_Center: {x: -0.39818478, y: 0.036851704, z: -0.0010676384}
 --- !u!114 &5401169152368576334
 MonoBehaviour:
   m_ObjectHideFlags: 0

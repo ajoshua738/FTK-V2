@@ -20,7 +20,7 @@ public class UIDisplayIngredientInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-   
+        ingredientInfoPrefab.SetActive(false);
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
         grabInteractable.selectEntered.AddListener(x => ShowInfo());
         grabInteractable.selectExited.AddListener(x => HideInfo());

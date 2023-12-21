@@ -7,8 +7,15 @@ public class IngredientCookedState : IngredientBaseState
     bool hasCalledIsCookingEvent = false;
     public override void EnterState(IngredientStateManager ingredient)
     {
-        ingredient.cookedObj.SetActive(true);
-        ingredient.ingredientObj.SetActive(false);
+
+        
+        if (ingredient.ingredientObj != ingredient.cookedObj)
+        {
+            ingredient.cookedObj.SetActive(true);
+            ingredient.ingredientObj.SetActive(false);
+        }
+      
+       
         ingredient.ingredient.ingredientSO = ingredient.cookedSO;
         Debug.Log("cooked state");
 
@@ -16,6 +23,7 @@ public class IngredientCookedState : IngredientBaseState
         ingredient.progressBarImg.color = Color.red;
        
         ingredient.progress = 0;
+        ingredient.kitchenToolUI.ChangeIngredientName(ingredient.rawSO.ingredientName, ingredient.cookedSO.ingredientName);
     }
 
     public override void OnCollisionEnter(IngredientStateManager ingredient, Collision collision)
@@ -30,16 +38,21 @@ public class IngredientCookedState : IngredientBaseState
 
     public override void OnTriggerEnter(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove == null)
         {
             ingredient.stove = other.GetComponent<Stove>();
+        }
+
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove != null)
+        {
+
             ingredient.isCooking = true;
         }
     }
 
     public override void OnTriggerExit(IngredientStateManager ingredient, Collider other)
     {
-        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag))
+        if (other.gameObject.CompareTag(ingredient.kitchenEquipmentTag) && ingredient.stove != null)
         {
             ingredient.isCooking = false;
             IsNotCookingEvents(ingredient);
@@ -48,12 +61,9 @@ public class IngredientCookedState : IngredientBaseState
 
     public override void UpdateState(IngredientStateManager ingredient)
     {
-        if (ingredient.stove == null)
-        {
-            return;
-        }
+     
 
-        if (ingredient.isCooking && ingredient.stove.isOn && ingredient.stove.hasCorrectKitchenTool)
+        if (ingredient.stove != null && ingredient.isCooking && ingredient.stove.isOn && ingredient.stove.hasCorrectKitchenTool)
         {
             ingredient.timer += Time.deltaTime;
             if (!hasCalledIsCookingEvent)

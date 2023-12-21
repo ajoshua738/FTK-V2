@@ -44,7 +44,7 @@ public class PattyCookedState : PattyBaseState
 
         patty.grillSound.Play();
         patty.cookSmoke.SetActive(true);
-        patty.progressBarInstance.SetActive(true);
+        patty.progressBarPrefab.SetActive(true);
     }
 
     public void IsNotCookingEvents(PattyStateManager patty)
@@ -52,7 +52,7 @@ public class PattyCookedState : PattyBaseState
 
         patty.grillSound.Stop();
         patty.cookSmoke.SetActive(false);
-        patty.progressBarInstance.SetActive(false);
+        patty.progressBarPrefab.SetActive(false);
     }
 
 

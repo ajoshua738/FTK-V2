@@ -55,7 +55,7 @@ public class PattyStateManager : MonoBehaviour
     public GameObject progressBarPrefab;
     public float yOffset = 0.1f; // Adjust this value to set the height above the object
     public Transform objectToFollow;
-    public GameObject progressBarInstance;
+
     public Image progressBarImg;
 
     // Start is called before the first frame update
@@ -76,17 +76,11 @@ public class PattyStateManager : MonoBehaviour
 
         ingredient = GetComponent<Ingredient>();
 
-        progressBarInstance = Instantiate(progressBarPrefab, transform.position + Vector3.up * yOffset, Quaternion.identity);
+        
         objectToFollow = transform;
 
-        foreach (Transform child in progressBarInstance.transform)
-        {
-            if (child.CompareTag("ProgressBar"))
-            {
-                progressBarImg = child.gameObject.GetComponent<Image>();
-            }
-        }
-        progressBarInstance.SetActive(false);
+
+        progressBarPrefab.SetActive(false);
 
     }
 
@@ -105,10 +99,20 @@ public class PattyStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
         //Debug.Log(currentState);
-        if (progressBarInstance != null && objectToFollow != null)
+        if (progressBarPrefab != null && objectToFollow != null)
         {
             // Update the progress bar's position to follow the object
-            progressBarInstance.transform.position = objectToFollow.position + Vector3.up * yOffset;
+            progressBarPrefab.transform.position = objectToFollow.position + Vector3.up * yOffset;
+        }
+
+        if (cookSmoke != null && objectToFollow != null)
+        {
+            cookSmoke.transform.position = objectToFollow.position + Vector3.up * yOffset;
+        }
+
+        if (burnSmoke != null && objectToFollow != null)
+        {
+            burnSmoke.transform.position = objectToFollow.position + Vector3.up * yOffset;
         }
     }
 

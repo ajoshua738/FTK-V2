@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 7584675308000636791}
   - component: {fileID: 5544826907974062920}
   - component: {fileID: 8062428620631738919}
-  - component: {fileID: 668922449472881342}
   - component: {fileID: 4644546873779815136}
   m_Layer: 8
   m_Name: Bacon
@@ -533,20 +532,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &668922449472881342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3415702828951183319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f06466b92947e42bb3805634bfd164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandModel: {fileID: 0}
-  rightHandModel: {fileID: 0}
 --- !u!114 &4644546873779815136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,9 +546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookSound: {fileID: 5544826907974062920}
   burnSound: {fileID: 8062428620631738919}
-  progressBarUI: {fileID: 4986582454236107026}
-  img: {fileID: 5726944499190233367}
   ingredient: {fileID: 0}
+  rawSO: {fileID: 11400000, guid: b17791f4982dcb0489c3d5e0655bbc9c, type: 2}
   cookedSO: {fileID: 11400000, guid: a6901c756b037394199f37cd3f7b7c76, type: 2}
   burntSO: {fileID: 11400000, guid: 91fdbfd0c41416944a08bd2313a63eeb, type: 2}
   progress: 0
@@ -575,9 +559,15 @@ MonoBehaviour:
   timer: 0
   cookSmoke: {fileID: 2165263645390859956}
   burnSmoke: {fileID: 7952034082826323350}
-  burntObj: {fileID: 2315214977701883587}
   ingredientObj: {fileID: 7977723200528431837}
-  kitchenEquipmentTag: KitchenEquipment/Stove
+  cookedObj: {fileID: 7977723200528431837}
+  burntObj: {fileID: 2315214977701883587}
+  kitchenEquipmentTag: KitchenEquipment/LeftStove
+  progressBarPrefab: {fileID: 7805364214060740949}
+  yOffset: 0.1
+  objectToFollow: {fileID: 0}
+  progressBarImg: {fileID: 3882544594173032992}
+  kitchenToolUI: {fileID: 0}
 --- !u!1 &7977723200528431837
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,15 +960,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6474295402909843038}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4986582454236107026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2083679055593533260, guid: 82b4b54db13116a4c8a588fcc44aee06,
-    type: 3}
-  m_PrefabInstance: {fileID: 6474295402909843038}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5726944499190233367 stripped
+--- !u!114 &3882544594173032992 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1631254074886113097, guid: 82b4b54db13116a4c8a588fcc44aee06,
+  m_CorrespondingSourceObject: {fileID: 7798194828418303102, guid: 82b4b54db13116a4c8a588fcc44aee06,
     type: 3}
   m_PrefabInstance: {fileID: 6474295402909843038}
   m_PrefabAsset: {fileID: 0}
@@ -988,3 +972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7805364214060740949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3858292096385437451, guid: 82b4b54db13116a4c8a588fcc44aee06,
+    type: 3}
+  m_PrefabInstance: {fileID: 6474295402909843038}
+  m_PrefabAsset: {fileID: 0}

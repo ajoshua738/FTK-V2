@@ -9,7 +9,7 @@ public class GenerateReticle : MonoBehaviour
     public float offset = 0.01f; // Adjust this offset value as needed
     public Transform origin;
 
-    private GameObject reticleInstance;
+    public GameObject reticleInstance;
 
 
     public int pourThreshold = 35;

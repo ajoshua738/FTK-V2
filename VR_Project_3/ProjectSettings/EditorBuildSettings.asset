@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: a748020980abd5d449cce54c0cdb1c46
+    path: Assets/Scenes/New Main Menu.unity
+    guid: d2281db2938050b4b93a88c0c2c9538a
   - enabled: 1
     path: Assets/Scenes/Burger Level.unity
     guid: 38b4978c00a6f9e45bd236d27d6d746b
   - enabled: 1
-    path: Assets/Scenes/Eng Breakfast Level.unity
-    guid: 4da97ffe61d08364da4673ff5b17cb8d
+    path: Assets/Scenes/EB Level.unity
+    guid: c2b061c44485b514c9de10b97f04d3fd
+  - enabled: 1
+    path: Assets/Scenes/Steak Level.unity
+    guid: fe53ec20735f4ed4ab40945816d7350a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a0351ed6a49cab440a3230c0edfcc62c,
       type: 2}

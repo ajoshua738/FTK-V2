@@ -270,6 +270,7 @@ MonoBehaviour:
     m_Bits: 1024
   offset: 0.01
   origin: {fileID: 8258734695297691608}
+  reticleInstance: {fileID: 0}
   pourThreshold: 35
   isPouring: 0
   currentAngle: 0

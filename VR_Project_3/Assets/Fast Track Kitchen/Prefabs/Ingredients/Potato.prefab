@@ -343,6 +343,7 @@ MonoBehaviour:
   cookSound: {fileID: 2876567283205873751}
   burnSound: {fileID: 2071398687012283893}
   ingredient: {fileID: 0}
+  rawSO: {fileID: 11400000, guid: 9bc6920c68ad30a4bb507a0bbb8a2894, type: 2}
   cookedSO: {fileID: 11400000, guid: 8d3740ad0ddabb141985f1f1e4676bdc, type: 2}
   burntSO: {fileID: 11400000, guid: 4994f222649faff48a0a64fc7b7e8579, type: 2}
   progress: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   yOffset: 0.1
   objectToFollow: {fileID: 0}
   progressBarImg: {fileID: 7907105173927846804}
+  kitchenToolUI: {fileID: 0}
 --- !u!114 &1259219954380822630
 MonoBehaviour:
   m_ObjectHideFlags: 0

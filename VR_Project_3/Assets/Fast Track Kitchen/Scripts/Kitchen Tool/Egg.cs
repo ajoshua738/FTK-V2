@@ -32,7 +32,10 @@ public class Egg : MonoBehaviour
         if (Physics.Raycast(origin.position, Vector3.down, out RaycastHit hit, 2.0f, layerMask) && generateReticle.isPouring)
         {
             Instantiate(eggPrefab, hit.point, Quaternion.identity);
-            eggObject.SetActive(false);
+            gameObject.SetActive(false);
+            generateReticle.reticleInstance.SetActive(false);
+            generateReticle.enabled = false;
+            
             StartCoroutine(DestroyEgg());
         }
 

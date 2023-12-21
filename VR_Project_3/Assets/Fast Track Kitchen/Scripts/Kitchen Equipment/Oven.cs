@@ -46,7 +46,7 @@ public class Oven : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isOn && hasCorrectKitchenTool /*&& doorHinge.transform.eulerAngles.y <= 95*/)
+        if(isOn && hasCorrectKitchenTool && doorHinge.transform.eulerAngles.y <= 95)
         {
             activateCooking = true;
             time += Time.deltaTime;
